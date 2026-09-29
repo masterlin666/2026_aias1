@@ -1,0 +1,10 @@
+# test_bclri.txt -- Zbs BCLRI tests
+
+    li x1, 0xF
+    bclri x2, x1, 1         # Expected: x2 = 13 (0xd)
+
+    li x3, 0x80000000
+    bclri x4, x3, 31        # Expected: x4 = 0 (0x0)
+
+    li x5, 0xA
+    bclri x6, x5, 4         # Expected: x6 = 10 (0xa, clearing an already-zero bit)

@@ -1,0 +1,167 @@
+{
+    "hw2_1": {
+        "description": "GoogleNet (Inception v1) Full Analysis",
+        "model_name": "GoogleNet",
+        "googlenet_params": {
+            "expected": 6624904,
+            "tolerance": 10000,
+            "description": "GoogleNet has ~6.6M parameters. Exact count may vary slightly by torchvision version due to auxiliary classifiers."
+        },
+        "googlenet_memory": {
+            "fp32_bytes": 26499616,
+            "fp32_mb": 25.27,
+            "fp16_bytes": 13249808,
+            "fp16_mb": 12.63,
+            "int8_bytes": 6624904,
+            "int8_mb": 6.32,
+            "description": "FP32 = params * 4, FP16 = params * 2, INT8 = params * 1"
+        },
+        "googlenet_macs": {
+            "expected": 1504889856,
+            "tolerance_percent": 2,
+            "description": "Total MACs for GoogleNet with input (1, 3, 224, 224). Approximately 1.5 billion MACs. May vary slightly depending on whether auxiliary classifiers are included."
+        },
+        "googlenet_conv2d_layers": {
+            "expected_count": 57,
+            "tolerance": 5,
+            "description": "Number of Conv2d layers in GoogleNet. The exact count depends on whether auxiliary classifiers are included (57 with aux, ~52 without)."
+        },
+        "googlenet_linear_layers": {
+            "expected_count": 1,
+            "tolerance": 2,
+            "description": "GoogleNet has 1 main FC layer (and 2 auxiliary FC layers if aux_logits=True)."
+        },
+        "scoring": {
+            "params": 5,
+            "memory": 5,
+            "torchinfo": 5,
+            "macs": 10,
+            "hooks": 5
+        }
+    },
+    "hw2_2": {
+        "description": "MobileNetV2 ONNX Analysis",
+        "model_name": "MobileNetV2",
+        "operators": {
+            "expected_types": [
+                "Conv",
+                "BatchNormalization",
+                "Clip",
+                "Add",
+                "Shape",
+                "Gather",
+                "Unsqueeze",
+                "Concat",
+                "Reshape",
+                "Gemm",
+                "GlobalAveragePool"
+            ],
+            "description": "Expected operator types in MobileNetV2 ONNX model. Exact set may vary by opset and export method."
+        },
+        "depthwise_convolutions": {
+            "expected_count_range": [17, 20],
+            "description": "MobileNetV2 has 17 inverted residual blocks, each with a depthwise conv (group=C_in)."
+        },
+        "pointwise_convolutions": {
+            "expected_count_range": [30, 40],
+            "description": "1x1 pointwise convolutions. Each block has expansion + projection (2 per block), plus initial and final convs."
+        },
+        "weight_data": {
+            "expected_mb": 13.6,
+            "tolerance_mb": 2.0,
+            "description": "Total weight data in MB (FP32). MobileNetV2 has ~3.4M params = ~13.6 MB in FP32."
+        },
+        "loading_times": {
+            "ddr4_25_6_gbps": {
+                "bandwidth_gbps": 25.6,
+                "expected_us": 531,
+                "tolerance_us": 100,
+                "description": "Loading time = weight_bytes / bandwidth"
+            },
+            "lpddr5_51_2_gbps": {
+                "bandwidth_gbps": 51.2,
+                "expected_us": 266,
+                "tolerance_us": 50
+            },
+            "hbm2e_460_gbps": {
+                "bandwidth_gbps": 460,
+                "expected_us": 30,
+                "tolerance_us": 10
+            }
+        },
+        "scoring": {
+            "operators": 10,
+            "bandwidth": 10,
+            "activations": 10
+        }
+    },
+    "hw2_3": {
+        "description": "ONNX Graph Transformation -- Tiling Linear Layers",
+        "tile_size": 64,
+        "alexnet_linear_layers": {
+            "classifier_1": {
+                "in_features": 9216,
+                "out_features": 4096,
+                "tiles_m": 144,
+                "tiles_n": 64,
+                "total_matmul_tiles": 9216,
+                "description": "9216/64 = 144 input tiles, 4096/64 = 64 output tiles, 144 * 64 = 9216 MatMul ops"
+            },
+            "classifier_4": {
+                "in_features": 4096,
+                "out_features": 4096,
+                "tiles_m": 64,
+                "tiles_n": 64,
+                "total_matmul_tiles": 4096,
+                "description": "4096/64 = 64 input tiles, 4096/64 = 64 output tiles, 64 * 64 = 4096 MatMul ops"
+            },
+            "classifier_6": {
+                "in_features": 4096,
+                "out_features": 1000,
+                "tiles_m": 64,
+                "tiles_n": 16,
+                "padded_out_features": 1024,
+                "total_matmul_tiles": 1024,
+                "description": "4096/64 = 64 input tiles, ceil(1000/64) = 16 output tiles (padded to 1024), 64 * 16 = 1024 MatMul ops. Output must be sliced back to 1000."
+            }
+        },
+        "alexnet_tiling": {
+            "min_matmul_nodes": 100,
+            "expected_total_matmul_nodes": 14336,
+            "original_gemm_count": 3,
+            "transformed_gemm_count": 0,
+            "description": "After tiling, all 3 Gemm nodes should be replaced with MatMul-based subgraphs. Total MatMul nodes = 9216 + 4096 + 1024 = 14336."
+        },
+        "verification": {
+            "num_tests": 100,
+            "atol": 1e-5,
+            "expected_max_error": 1e-4,
+            "description": "All 100 random input tests should pass with np.allclose(atol=1e-5). Max absolute error should be well below 1e-4."
+        },
+        "scoring": {
+            "single_linear": 10,
+            "tiled_subgraph": 10,
+            "alexnet_transform": 10,
+            "equivalence_verification": 10
+        }
+    },
+    "bonus": {
+        "code_quality": {
+            "max_points": 5,
+            "criteria": [
+                "Clean, well-documented code with docstrings",
+                "Modular functions with clear interfaces",
+                "Descriptive variable names",
+                "Well-formatted console output with headers",
+                "Additional analysis beyond requirements (e.g., performance comparison, visualization)"
+            ]
+        }
+    },
+    "metadata": {
+        "module": 2,
+        "title": "AI Model Analysis & Profiling",
+        "total_points": 100,
+        "bonus_points": 5,
+        "version": "1.0"
+    }
+}

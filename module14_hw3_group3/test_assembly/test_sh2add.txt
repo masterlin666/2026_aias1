@@ -1,0 +1,13 @@
+# test_sh2add.txt -- Zba SH2ADD tests
+
+    li x1, 3
+    li x2, 4
+    sh2add x3, x1, x2       # Expected: x3 = 16 (0x10)
+
+    li x4, 0x40000000
+    li x5, 1
+    sh2add x6, x4, x5       # Expected: x6 = 1 (0x1, wraparound)
+
+    li x7, -1
+    li x8, 4
+    sh2add x9, x7, x8       # Expected: x9 = 0 (0x0)

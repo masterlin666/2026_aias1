@@ -1,0 +1,13 @@
+# test_clmulh.txt -- Zbc CLMULH tests
+
+    li x1, 0x80000000
+    li x2, 2
+    clmulh x3, x1, x2       # Expected: x3 = 1
+
+    li x4, 0xFFFFFFFF
+    li x5, 0xFFFFFFFF
+    clmulh x6, x4, x5       # Expected: x6 = 0x55555555
+
+    li x7, 0
+    li x8, 0x12345678
+    clmulh x9, x7, x8       # Expected: x9 = 0

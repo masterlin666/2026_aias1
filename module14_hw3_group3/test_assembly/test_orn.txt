@@ -1,0 +1,13 @@
+# test_orn.txt -- Zbb ORN tests
+
+    li x1, 0x0F0F0F0F
+    li x2, 0x00FF00FF
+    orn x3, x1, x2          # Expected: x3 = 0xFF0FFF0F
+
+    li x4, 0
+    li x5, 0
+    orn x6, x4, x5          # Expected: x6 = -1 (0xFFFFFFFF)
+
+    li x7, 0xFFFFFFFF
+    li x8, 0x12345678
+    orn x9, x7, x8          # Expected: x9 = -1 (0xFFFFFFFF)

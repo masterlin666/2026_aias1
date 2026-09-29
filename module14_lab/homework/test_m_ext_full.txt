@@ -1,0 +1,32 @@
+# Setup: build a large positive and a negative operand
+lui    x28, 0x7FFFF
+addi   x28, x28, 2047
+addi   x28, x28, 1          # x28 = 0x7FFFF800
+lui    x29, 0xFFFFF
+addi   x29, x29, -1         # x29 = 0xFFFFEFFF
+
+# Multiply-high family (signed / unsigned / signed-unsigned)
+mul    x10, x28, x29
+mulh   x11, x28, x29
+mulhu  x12, x28, x29
+mulhsu x13, x28, x29
+
+# Signed & unsigned divide / remainder
+addi   x5, x0, 7           # x5 = 7
+addi   x6, x0, -3          # x6 = -3
+div    x14, x6, x5
+rem    x15, x6, x5
+divu   x16, x6, x5
+remu   x17, x6, x5
+
+# Divide-by-zero edge cases
+addi   x7, x0, 0           # x7 = 0
+div    x18, x28, x7
+rem    x19, x28, x7
+
+# Signed overflow edge case (INT_MIN / -1)
+lui    x20, 0x80000        # x20 = 0x80000000
+addi   x30, x0, -1         # x30 = -1
+div    x22, x20, x30
+rem    x23, x20, x30
+hcf

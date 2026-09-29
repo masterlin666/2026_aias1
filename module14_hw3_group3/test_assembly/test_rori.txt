@@ -1,0 +1,14 @@
+# Test 1: Rotate by 4 bits
+li x1, 0x12345678
+rori x2, x1, 4
+# Expected: x2 = 0x81234567
+
+# Test 2: Rotate by 31 bits (Equivalent to rotate left by 1)
+li x1, 0x80000001
+rori x3, x1, 31
+# Expected: x3 = 3 (0x00000003)
+
+# Test 3: Rotate by 0 bits
+li x1, 0xABCDE000
+rori x4, x1, 0
+# Expected: x4 = 0xABCDE000 (-1412571136)

@@ -1,0 +1,10 @@
+# test_ctz.txt -- Zbb CTZ tests
+
+    li x1, 0x10
+    ctz x2, x1              # Expected: x2 = 4
+
+    li x3, 0x80000000
+    ctz x4, x3              # Expected: x4 = 31
+
+    li x5, 0
+    ctz x6, x5              # Expected: x6 = 32

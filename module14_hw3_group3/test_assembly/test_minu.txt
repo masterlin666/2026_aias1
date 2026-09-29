@@ -1,0 +1,32 @@
+# test_minu.txt -- MINU (Zbb) Tests
+# MINU: rd = min(rs1, rs2) (unsigned)
+
+# Test case 1: Basic minimum with different values
+    li x1, 10
+    li x2, 20
+    minu x3, x1, x2          # Expected: x3 = 10 (10 < 20)
+
+# Test case 2: Minimum with reverse order
+    li x4, 100
+    li x5, 50
+    minu x6, x4, x5          # Expected: x6 = 50
+
+# Test case 3: Minimum with equal values
+    li x7, 12345
+    li x8, 12345
+    minu x9, x7, x8          # Expected: x9 = 12345
+
+# Test case 4: Minimum with zero
+    li x10, 0
+    li x11, 999
+    minu x12, x10, x11       # Expected: x12 = 0
+
+# Test case 5: Minimum with large unsigned values
+    li x13, 0x80000000       # Large unsigned (2147483648)
+    li x14, 0x7FFFFFFF       # Smaller unsigned (2147483647)
+    minu x15, x13, x14       # Expected: x15 = 0x7FFFFFFF (0x7FFFFFFF is smaller in unsigned)
+
+# Test case 6: Minimum with max unsigned values
+    li x16, 0xFFFFFFFF       # Max unsigned
+    li x17, 0xFFFFFFFE       # Second largest unsigned
+    minu x18, x16, x17       # Expected: x18 = 0xFFFFFFFE

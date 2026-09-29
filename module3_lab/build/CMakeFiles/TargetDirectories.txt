@@ -1,0 +1,6 @@
+/workspace/module3_lab/build/CMakeFiles/hw3_1.dir
+/workspace/module3_lab/build/CMakeFiles/hw3_2.dir
+/workspace/module3_lab/build/CMakeFiles/hw3_3.dir
+/workspace/module3_lab/build/CMakeFiles/hw3_4.dir
+/workspace/module3_lab/build/CMakeFiles/edit_cache.dir
+/workspace/module3_lab/build/CMakeFiles/rebuild_cache.dir

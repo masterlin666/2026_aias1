@@ -1,0 +1,13 @@
+# test_andn.txt -- Zbb ANDN tests
+
+    li x1, 0xF0
+    li x2, 0xCC
+    andn x3, x1, x2         # Expected: x3 = 48 (0x30)
+
+    li x4, 0xFFFFFFFF
+    li x5, 0
+    andn x6, x4, x5         # Expected: x6 = -1 (0xffffffff)
+
+    li x7, 0x12345678
+    li x8, 0xFFFF0000
+    andn x9, x7, x8         # Expected: x9 = 22136 (0x5678)

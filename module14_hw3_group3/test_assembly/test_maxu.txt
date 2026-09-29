@@ -1,0 +1,17 @@
+# Test 1: Simple unsigned comparison
+li x1, 10
+li x2, 100
+maxu x3, x1, x2
+# Expected: x3 = 100
+
+# Test 2: Signed negative vs positive (unsigned perspective)
+li x1, -1          # 0xFFFFFFFF (Largest unsigned)
+li x2, 1           # 0x00000001
+maxu x4, x1, x2
+# Expected: x4 = -1 (0xFFFFFFFF)
+
+# Test 3: Equal values
+li x1, 50
+li x2, 50
+maxu x5, x1, x2
+# Expected: x5 = 50

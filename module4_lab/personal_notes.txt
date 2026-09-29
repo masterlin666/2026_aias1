@@ -1,0 +1,13 @@
+#作業開始
+git clone https://course.playlab.tw/git/procat/module4_lab.git
+#指令
+git add .
+git commit -m "try"
+git push origin main
+
+#on docker
+python3 hw4_1_attention.py
+python3 hw4_1_ffn.py
+python3 hw4_2_variants.py
+python3 hw4_2_memory.py
+python3 hw4_3_requirements.py

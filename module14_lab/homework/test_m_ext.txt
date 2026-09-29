@@ -1,0 +1,36 @@
+   # test_m_ext.txt -- M Extension Tests
+   # Test MULHU
+       li x1, 0x80000000        # 2^31 (large unsigned)
+       li x2, 4
+       mulhu x3, x1, x2        # Expected: x3 = 2 (high bits of 2^33)
+
+       li x4, 0xFFFFFFFF        # Max unsigned (4294967295)
+       li x5, 0xFFFFFFFF
+       mulhu x6, x4, x5        # Expected: x6 = 0xFFFFFFFE
+
+   # Test REM (signed)
+       li x7, 17
+       li x8, 5
+       rem x9, x7, x8          # Expected: x9 = 2
+
+       li x10, -17
+       li x11, 5
+       rem x12, x10, x11       # Expected: x12 = -2
+
+       li x13, 17
+       li x14, 0
+       rem x15, x13, x14       # Expected: x15 = 17 (div by zero)
+
+   # Test REMU (unsigned)
+       li x16, 17
+       li x17, 5
+       remu x18, x16, x17      # Expected: x18 = 2
+
+       li x19, 0xFFFFFFFB      # 4294967291 unsigned
+       li x20, 10
+       remu x21, x19, x20      # Expected: x21 = 1
+
+       li x22, 17
+       li x23, 0
+       remu x24, x22, x23      # Expected: x24 = 17 (div by zero)
+   

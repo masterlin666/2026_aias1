@@ -1,0 +1,13 @@
+# test_max.txt -- Zbb MAX tests
+
+    li x1, 5
+    li x2, 9
+    max x3, x1, x2          # Expected: x3 = 9 (0x9)
+
+    li x4, -3
+    li x5, 2
+    max x6, x4, x5          # Expected: x6 = 2 (0x2)
+
+    li x7, -1
+    li x8, -5
+    max x9, x7, x8          # Expected: x9 = -1 (0xffffffff)

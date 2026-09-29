@@ -1,0 +1,8 @@
+python3 lab32_1_operator_profiling.py
+git add .
+git commit -m "try"
+git push origin main
+
+python3 hw32_1.py
+python3 hw32_2.py
+git rev-parse HEAD

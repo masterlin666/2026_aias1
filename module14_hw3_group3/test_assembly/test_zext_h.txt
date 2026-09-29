@@ -1,0 +1,28 @@
+# test_zext_h.txt -- ZEXT.H (Zbb) Tests
+# ZEXT.H: Zero-extend halfword (bits [15:0] to 32-bit with zero extension)
+
+# Test case 1: Basic zero-extend halfword
+    li x1, 0x12345678
+    zext.h x2, x1            # Expected: x2 = 0x00005678 (keep lower 16 bits, zero upper 16)
+
+# Test case 2: Zero-extend with all ones in halfword
+    li x3, 0x1234FFFF
+    zext.h x4, x3            # Expected: x4 = 0x0000FFFF
+
+# Test case 3: Zero-extend with zeros in halfword
+    li x5, 0xFFFF0000
+    zext.h x6, x5            # Expected: x6 = 0x00000000
+
+# Test case 4: Zero-extend from register with pattern
+    li x7, 0xABCDA5A5
+    zext.h x8, x7            # Expected: x8 = 0x0000A5A5
+
+# Test case 5: Zero-extend with 0x00000001
+    li x9, 0xFFFFFFFF
+    li x10, 1
+    add x11, x9, x10         # x11 = 0x00000000
+    zext.h x12, x11          # Expected: x12 = 0x00000000
+
+# Test case 6: Zero-extend with 0xFFFF
+    li x13, 0x1234FFFF
+    zext.h x14, x13          # Expected: x14 = 0x0000FFFF

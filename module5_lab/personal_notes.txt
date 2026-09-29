@@ -1,0 +1,9 @@
+git clone https://course.playlab.tw/git/procat/module4_lab.git
+git add .
+git commit -m "try"
+git push origin main
+
+gcc -g -O2 -mavx2 -mfma -o gemm gemm_hw.c -lm
+python3 profile_resnet50.py
+python3 profile_bert.py
+

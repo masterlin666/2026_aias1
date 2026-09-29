@@ -1,0 +1,14 @@
+# Case 1: 5 + (10 << 3) = 85
+li x1, 10
+li x2, 5
+sh3add x3, x1, x2  # Expected: x3 = 0x55 (85)
+
+# Case 2: 100 + (1 << 3) = 108
+li x4, 1
+li x5, 100
+sh3add x6, x4, x5  # Expected: x6 = 0x6C (108)
+
+# Case 3: 1 + (0x1FFFFFFF << 3) = 0xFFFFFFF9 (Overflow check)
+li x7, 0x1FFFFFFF
+li x8, 1
+sh3add x9, x7, x8  # Expected: x9 = 0xFFFFFFF9

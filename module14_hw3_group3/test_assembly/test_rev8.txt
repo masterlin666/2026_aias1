@@ -1,0 +1,26 @@
+# test_rev8.txt -- REV8 (Zbb) Tests
+# REV8: Byte-reverse register (reverse byte order)
+
+# Test case 1: Basic byte reversal
+    li x1, 0x12345678
+    rev8 x2, x1              # Expected: x2 = 0x78563412 (bytes reversed)
+
+# Test case 2: Byte reversal with identical bytes
+    li x3, 0xAAAAAAAA
+    rev8 x4, x3              # Expected: x4 = 0xAAAAAAAA (same pattern)
+
+# Test case 3: Byte reversal with zeros and ones
+    li x5, 0xFF000000
+    rev8 x6, x5              # Expected: x6 = 0xFF (reversed: 00 00 00 FF)
+
+# Test case 4: Byte reversal with all zeros
+    li x7, 0x00000000
+    rev8 x8, x7              # Expected: x8 = 0x00000000
+
+# Test case 5: Byte reversal with all ones
+    li x9, 0xFFFFFFFF
+    rev8 x10, x9             # Expected: x10 = 0xFFFFFFFF
+
+# Test case 6: Byte reversal with incremental pattern
+    li x11, 0x01020304
+    rev8 x12, x11            # Expected: x12 = 0x04030201

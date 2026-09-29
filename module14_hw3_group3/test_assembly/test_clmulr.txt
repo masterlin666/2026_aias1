@@ -1,0 +1,43 @@
+# test_clmulr.txt -- CLMULR (Zbc) Tests
+# CLMULR: Carry-less multiply, reversed (lower 32 bits of reversed result)
+
+# Test case 1: Basic carry-less multiply with simple values
+    li x1, 0x30000003
+    li x2, 0x50000005
+    clmulr x3, x1, x2        # Expected: x3 = 0x1e000000
+    # full clmul result:
+    # 00001111 00000000 00000000 00000000
+    # 00000000 00000000 00000000 00001111
+    # clmulr extracts bits [62:31]
+
+# Test case 2: Carry-less multiply with one operand zero
+    li x4, 0x00000000
+    li x5, 0xffffffff
+    clmulr x6, x4, x5        # Expected: x6 = 0x00000000
+
+# Test case 3: Carry-less multiply with both zero
+    li x7, 0x00000000
+    li x8, 0x00000000
+    clmulr x9, x7, x8        # Expected: x9 = 0x00000000
+    # full result = 1 << 62
+    # clmulr extracts bits [62:31]
+
+# Test case 4: Carry-less multiply with high bit set
+    li x10, 0x80000000
+    li x11, 0x80000000
+    clmulr x12, x10, x11        # Expected: x12 = 0x80000000
+    # full result = 1 << 62
+    # clmulr extracts bits [62:31]
+
+# Test case 5: Carry-less multiply with all bits set
+    li x13, 0xffffffff
+    li x14, 0xffffffff
+    clmulr x15, x13, x14        # Expected: x15 = 0xaaaaaaaa
+    # alternating bit pattern after carry-less multiplication
+
+# Test case 6: Carry-less multiply with one bit set
+    li x16, 0x00000001
+    li x17, 0x00000001
+    clmulr x18, x16, x17        # Expected: x18 = 0x00000000
+    # full result only affects bit 0
+    # bits [62:31] are all zero

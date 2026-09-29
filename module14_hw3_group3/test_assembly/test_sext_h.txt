@@ -1,0 +1,14 @@
+# Test 1: Positive halfword (MSB of halfword is 0)
+li x1, 0x00007FFF
+sext.h x2, x1
+# Expected: x2 = 32767 (0x00007FFF)
+
+# Test 2: Negative halfword (MSB of halfword is 1)
+li x1, 0x00008001
+sext.h x3, x1
+# Expected: x3 = -32767 (0xFFFF8001)
+
+# Test 3: High bits should be ignored
+li x1, 0x1234FFFF
+sext.h x4, x1
+# Expected: x4 = -1 (0xFFFFFFFF)

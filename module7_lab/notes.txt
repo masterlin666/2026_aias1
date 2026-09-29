@@ -1,0 +1,18 @@
+git clone https://course.playlab.tw/git/procat/module7_lab.git
+
+git add .
+git commit -m "try"
+git push origin main
+
+git clone https://course.playlab.tw/git/procat/module7_lab.git/playlab-chisel-template.git
+sbt 'Test/runMain hw6.MuxNTest -td ./generated -tbn verilator'
+C:\Users\LTN\Desktop\hw2026\module7_lab\test_run_dir\chisel_test_1775723363255\MuxN.vcd
+C:\Users\LTN\Desktop\hw2026\module7_lab\test_run_dir\chisel_test_1775800896390\RegFileForward.vcd
+ sbt 'Test/runMain hw6.DualPortSRAMTest -td ./generated -tbn verilator'
+
+ git log -1 --format="%H"
+
+ ./emulator test_assembly/test_sh3add.txt
+
+bash ./load_test_data.sh
+sbt 'Test/runMain acal_lab09.topTest'

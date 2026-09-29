@@ -1,0 +1,44 @@
+0000000000000000000000000000000000000000 f633f3c523f7b33ad3269d7c09c0ab5bac9e15a3 masterlin666 <linmingyan31@gmail.com> 1779527610 +0800	clone: from https://course.playlab.tw/git/procat/module17_lab.git
+f633f3c523f7b33ad3269d7c09c0ab5bac9e15a3 66608b4d6b454da3d4b0cc823a04d5243f672dc1 masterlin666 <linmingyan31@gmail.com> 1779528303 +0800	commit: i type first try
+66608b4d6b454da3d4b0cc823a04d5243f672dc1 7c3b5ef6f40c803caab170828e2780110135947a masterlin666 <linmingyan31@gmail.com> 1779528713 +0800	commit: i type second
+7c3b5ef6f40c803caab170828e2780110135947a 003679a305dc1bed355d6e1753801ccc679bf0a6 masterlin666 <linmingyan31@gmail.com> 1779528854 +0800	commit: i type second
+003679a305dc1bed355d6e1753801ccc679bf0a6 b24d24906938459fbf941ed4456281367db79b8b masterlin666 <linmingyan31@gmail.com> 1779528930 +0800	commit: i type second
+b24d24906938459fbf941ed4456281367db79b8b 1cace14522610e7cbef9aa6435ff0561bf3489c5 masterlin666 <linmingyan31@gmail.com> 1779604763 +0800	commit: change for branch type
+1cace14522610e7cbef9aa6435ff0561bf3489c5 03efab79314f26c188be69d049fdbdf300692091 masterlin666 <linmingyan31@gmail.com> 1779604944 +0800	commit: change for branch type second
+03efab79314f26c188be69d049fdbdf300692091 800cb8ba9e61bf00c91edcdc1e834be69a45b941 masterlin666 <linmingyan31@gmail.com> 1779605835 +0800	commit: change for branch type third try
+800cb8ba9e61bf00c91edcdc1e834be69a45b941 45b468443f16bd9564637bceba790d702d7e68a9 masterlin666 <linmingyan31@gmail.com> 1779605919 +0800	commit: change for branch type third try
+45b468443f16bd9564637bceba790d702d7e68a9 15865570efb25bbc1538b4cac6d4b0bf048e7018 masterlin666 <linmingyan31@gmail.com> 1779606028 +0800	commit: change for branch type third try
+15865570efb25bbc1538b4cac6d4b0bf048e7018 ea6dce9ccf7860022c5fbbd25bbd40a1dc7110d8 masterlin666 <linmingyan31@gmail.com> 1779606162 +0800	commit: change for branch type third try
+ea6dce9ccf7860022c5fbbd25bbd40a1dc7110d8 caf5e465dea327b24d33641d3ddf0c5d3456d876 masterlin666 <linmingyan31@gmail.com> 1779606318 +0800	commit: change for branch type third try
+caf5e465dea327b24d33641d3ddf0c5d3456d876 61d734db956b721306f2880f7095ca8d5dbc74a2 masterlin666 <linmingyan31@gmail.com> 1779606482 +0800	commit: change for branch type third try
+61d734db956b721306f2880f7095ca8d5dbc74a2 433e9cc0285e50abf2170815c8d78e172648909f masterlin666 <linmingyan31@gmail.com> 1779606769 +0800	commit: change for branch type forth try
+433e9cc0285e50abf2170815c8d78e172648909f 07c5fad6eb4c9e3639acd9628a329a72504900cd masterlin666 <linmingyan31@gmail.com> 1779607130 +0800	commit: change for branch type fifth try
+07c5fad6eb4c9e3639acd9628a329a72504900cd b24d24906938459fbf941ed4456281367db79b8b masterlin666 <linmingyan31@gmail.com> 1779607685 +0800	checkout: moving from main to b24d24906938459fbf941ed4456281367db79b8b
+b24d24906938459fbf941ed4456281367db79b8b b66117ac452c6fb212cba9bce6ba0fed2d3fe044 masterlin666 <linmingyan31@gmail.com> 1779607879 +0800	commit: back to 3 pass ver
+b66117ac452c6fb212cba9bce6ba0fed2d3fe044 bfa5d5d7c220de8a48cdf9ef26f55847f2af7c17 masterlin666 <linmingyan31@gmail.com> 1779608486 +0800	commit: back to 3 pass ver
+bfa5d5d7c220de8a48cdf9ef26f55847f2af7c17 73df0562957de3ff0225801a4dd4ca6cd84ca27a masterlin666 <linmingyan31@gmail.com> 1779608771 +0800	commit: from 3 pass ver modi
+73df0562957de3ff0225801a4dd4ca6cd84ca27a dc1d6ac5e795d8ed36067e7b82fe8d42b70e3bbe masterlin666 <linmingyan31@gmail.com> 1779608920 +0800	commit: from 3 pass ver modi
+dc1d6ac5e795d8ed36067e7b82fe8d42b70e3bbe bfcf6b8c343fbdd3bf173284982f76421e766f2b masterlin666 <linmingyan31@gmail.com> 1779609064 +0800	commit: from 3 pass ver
+bfcf6b8c343fbdd3bf173284982f76421e766f2b 149ac3f310b02f8166938b16ae524d006cca1e8d masterlin666 <linmingyan31@gmail.com> 1779609354 +0800	commit: from 3 pass ver to 1
+149ac3f310b02f8166938b16ae524d006cca1e8d 9cce38b520a4d8b1243986c8c119ede3dffcfc3e masterlin666 <linmingyan31@gmail.com> 1779609501 +0800	commit: from 3 pass ver to 1.1
+9cce38b520a4d8b1243986c8c119ede3dffcfc3e 9cce38b520a4d8b1243986c8c119ede3dffcfc3e masterlin666 <linmingyan31@gmail.com> 1779610016 +0800	checkout: moving from 9cce38b520a4d8b1243986c8c119ede3dffcfc3e to jalleft
+9cce38b520a4d8b1243986c8c119ede3dffcfc3e c4d7093ff9790cfbe2b4c2e761928f5197f21719 masterlin666 <linmingyan31@gmail.com> 1779610050 +0800	commit: test
+c4d7093ff9790cfbe2b4c2e761928f5197f21719 baa7830e518155e83f4e612de8bf0e195f2e0c8f masterlin666 <linmingyan31@gmail.com> 1779610252 +0800	commit: jal
+baa7830e518155e83f4e612de8bf0e195f2e0c8f fb33bb05cd6245e2b7cf184433f2695b1899fef2 masterlin666 <linmingyan31@gmail.com> 1779610795 +0800	commit: idk
+fb33bb05cd6245e2b7cf184433f2695b1899fef2 07c5fad6eb4c9e3639acd9628a329a72504900cd masterlin666 <linmingyan31@gmail.com> 1779610806 +0800	checkout: moving from jalleft to main
+07c5fad6eb4c9e3639acd9628a329a72504900cd 518d2b21cb990ec236cd8184527be77c632e7625 masterlin666 <linmingyan31@gmail.com> 1779610884 +0800	commit: try to pass
+518d2b21cb990ec236cd8184527be77c632e7625 eba578ce62c8a91e282d8b2c1e830a324264b860 masterlin666 <linmingyan31@gmail.com> 1779611907 +0800	commit: to all cor
+eba578ce62c8a91e282d8b2c1e830a324264b860 567ebafc1758aeabf7a8e2bbfbe3eb6777a2eadd masterlin666 <linmingyan31@gmail.com> 1779612189 +0800	commit: to all cor
+567ebafc1758aeabf7a8e2bbfbe3eb6777a2eadd b841b9e7590213a2a5669d56ba643157943d68b2 masterlin666 <linmingyan31@gmail.com> 1779612609 +0800	commit: try to pass
+b841b9e7590213a2a5669d56ba643157943d68b2 7b9dd1f542a9e07277acebb29cd961665864ab79 masterlin666 <linmingyan31@gmail.com> 1779612770 +0800	commit: fin?
+7b9dd1f542a9e07277acebb29cd961665864ab79 0732cca534781b3dce967c5d4a0afdf7c3a779f1 masterlin666 <linmingyan31@gmail.com> 1779612910 +0800	commit: idkanymore
+0732cca534781b3dce967c5d4a0afdf7c3a779f1 be0305d1c99b3f08c3761058f1a3967e9eb3c5b6 masterlin666 <linmingyan31@gmail.com> 1779613166 +0800	commit: idkanymore
+be0305d1c99b3f08c3761058f1a3967e9eb3c5b6 8629fe7c0867747a4d95091a07d5de20279b33da masterlin666 <linmingyan31@gmail.com> 1779613342 +0800	commit: idkanymore
+8629fe7c0867747a4d95091a07d5de20279b33da 238272cf13442efaeb574c138edd2d03153bf4c0 masterlin666 <linmingyan31@gmail.com> 1779614066 +0800	commit: idkanymore
+238272cf13442efaeb574c138edd2d03153bf4c0 f1931b01460c24676c55353bd9a3a9033a6e2566 masterlin666 <linmingyan31@gmail.com> 1779614275 +0800	commit: idkanymore
+f1931b01460c24676c55353bd9a3a9033a6e2566 d87e059dc4e49958ea21b800fd0686ebd961973d masterlin666 <linmingyan31@gmail.com> 1779614477 +0800	commit: idkanymore
+d87e059dc4e49958ea21b800fd0686ebd961973d 76873703aa4154d54955f7d3bf46a6638015412d masterlin666 <linmingyan31@gmail.com> 1779614914 +0800	commit: idkanymore
+76873703aa4154d54955f7d3bf46a6638015412d 41f253fa095bcbffc3f3a36475c37e9a5562dc07 masterlin666 <linmingyan31@gmail.com> 1779615156 +0800	commit: fk
+41f253fa095bcbffc3f3a36475c37e9a5562dc07 fb33bb05cd6245e2b7cf184433f2695b1899fef2 masterlin666 <linmingyan31@gmail.com> 1779615159 +0800	checkout: moving from main to jalleft
+fb33bb05cd6245e2b7cf184433f2695b1899fef2 e3139fbafebbf2de07e6b47a5694c3da843d651b masterlin666 <linmingyan31@gmail.com> 1779615477 +0800	commit: sure?
+e3139fbafebbf2de07e6b47a5694c3da843d651b 088c4b76f44112569982fa3d294f567c38d6e4e4 masterlin666 <linmingyan31@gmail.com> 1779616947 +0800	commit: finally

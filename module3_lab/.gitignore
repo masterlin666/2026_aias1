@@ -1,0 +1,26 @@
+# Model files (too large for Git)
+
+*.tflite
+*.pth
+*.pt
+*.h5
+*.pb
+*.bin
+*.safetensors
+*.ckpt
+
+# PyTorch profiler / TensorBoard logs
+log/
+logs/
+runs/
+*.trace.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

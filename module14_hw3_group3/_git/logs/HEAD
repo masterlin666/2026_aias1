@@ -1,0 +1,36 @@
+0000000000000000000000000000000000000000 4c42d80e55598fbf720e1a098ec1640fe7816d85 masterlin666 <linmingyan31@gmail.com> 1778329480 +0800	clone: from https://course.playlab.tw/git/seer0208v2/module14_hw3_group3/
+4c42d80e55598fbf720e1a098ec1640fe7816d85 46e01cb29006f2f60c27ebb8c176efb9fa0b1b38 masterlin666 <linmingyan31@gmail.com> 1778383861 +0800	commit: add all inst
+46e01cb29006f2f60c27ebb8c176efb9fa0b1b38 f60f91ae5321a422e9856e165f0251d5c3c90320 masterlin666 <linmingyan31@gmail.com> 1778384404 +0800	commit: add all test cases
+f60f91ae5321a422e9856e165f0251d5c3c90320 5927fe37f5e4a0c8d4981e8d020884061e560e8e masterlin666 <linmingyan31@gmail.com> 1778384977 +0800	commit: add all test cases
+5927fe37f5e4a0c8d4981e8d020884061e560e8e 0000000000000000000000000000000000000000 masterlin666 <linmingyan31@gmail.com> 1778385383 +0800	Branch: renamed refs/heads/main to refs/heads/procat
+0000000000000000000000000000000000000000 5927fe37f5e4a0c8d4981e8d020884061e560e8e masterlin666 <linmingyan31@gmail.com> 1778385383 +0800	Branch: renamed refs/heads/main to refs/heads/procat
+5927fe37f5e4a0c8d4981e8d020884061e560e8e 12846af8f25099fbf3cb625752cad6a42db77141 masterlin666 <linmingyan31@gmail.com> 1778397766 +0800	checkout: moving from procat to main
+12846af8f25099fbf3cb625752cad6a42db77141 5927fe37f5e4a0c8d4981e8d020884061e560e8e masterlin666 <linmingyan31@gmail.com> 1778397812 +0800	checkout: moving from main to procat
+5927fe37f5e4a0c8d4981e8d020884061e560e8e 12846af8f25099fbf3cb625752cad6a42db77141 masterlin666 <linmingyan31@gmail.com> 1778397822 +0800	rebase (start): checkout main
+12846af8f25099fbf3cb625752cad6a42db77141 43453c75accc5bfe97b65b7c62cf5af0aea46281 masterlin666 <linmingyan31@gmail.com> 1778398270 +0800	rebase (continue): add all inst
+43453c75accc5bfe97b65b7c62cf5af0aea46281 6ae8bcbf122b9879d87aecc774361ea1f36d6432 masterlin666 <linmingyan31@gmail.com> 1778398339 +0800	rebase (pick): add all test cases
+6ae8bcbf122b9879d87aecc774361ea1f36d6432 a7e79c1073dcc8a4de727ebfe0af534464f21325 masterlin666 <linmingyan31@gmail.com> 1778398380 +0800	rebase (continue): add all test cases
+a7e79c1073dcc8a4de727ebfe0af534464f21325 a7e79c1073dcc8a4de727ebfe0af534464f21325 masterlin666 <linmingyan31@gmail.com> 1778398386 +0800	rebase (finish): returning to refs/heads/procat
+a7e79c1073dcc8a4de727ebfe0af534464f21325 0000000000000000000000000000000000000000 masterlin666 <linmingyan31@gmail.com> 1778403318 +0800	Branch: renamed refs/heads/procat to refs/heads/feature/林名延
+0000000000000000000000000000000000000000 a7e79c1073dcc8a4de727ebfe0af534464f21325 masterlin666 <linmingyan31@gmail.com> 1778403318 +0800	Branch: renamed refs/heads/procat to refs/heads/feature/林名延
+a7e79c1073dcc8a4de727ebfe0af534464f21325 a7db76a62341799b8b127411a59917dccb8d2cf5 masterlin666 <linmingyan31@gmail.com> 1778403459 +0800	commit: fix line 330
+a7db76a62341799b8b127411a59917dccb8d2cf5 30835f2ade0782cece53b7c997b6a411748d7423 masterlin666 <linmingyan31@gmail.com> 1778405081 +0800	commit: add git ignore
+30835f2ade0782cece53b7c997b6a411748d7423 4282850b2063ad5c786edc8581e122e2b35de629 masterlin666 <linmingyan31@gmail.com> 1778405258 +0800	commit: remove exe
+4282850b2063ad5c786edc8581e122e2b35de629 8b0c3103a278cd339bb2f41ad6ffc4cf75e8d4c7 masterlin666 <linmingyan31@gmail.com> 1778406538 +0800	commit: 0xffu prob and enum prob
+8b0c3103a278cd339bb2f41ad6ffc4cf75e8d4c7 780ce8b9189f7427248898e930ecd7a80dcb5965 masterlin666 <linmingyan31@gmail.com> 1778406563 +0800	rebase (start): checkout origin/main
+780ce8b9189f7427248898e930ecd7a80dcb5965 8b0c3103a278cd339bb2f41ad6ffc4cf75e8d4c7 masterlin666 <linmingyan31@gmail.com> 1778406664 +0800	rebase (abort): returning to refs/heads/feature/林名延
+8b0c3103a278cd339bb2f41ad6ffc4cf75e8d4c7 780ce8b9189f7427248898e930ecd7a80dcb5965 masterlin666 <linmingyan31@gmail.com> 1778406728 +0800	rebase (start): checkout origin/main
+780ce8b9189f7427248898e930ecd7a80dcb5965 709adf88d9f63935a21ce175e37efbd1eddb3dbc masterlin666 <linmingyan31@gmail.com> 1778407103 +0800	rebase (continue): add all inst
+709adf88d9f63935a21ce175e37efbd1eddb3dbc 3ff2061f82accc3468c91d9ae92e9a41bbd56b4f masterlin666 <linmingyan31@gmail.com> 1778407109 +0800	rebase (pick): add all test cases
+3ff2061f82accc3468c91d9ae92e9a41bbd56b4f 82bfd4a2f7e7e4792b233d15cfdec44cba6a1f7b masterlin666 <linmingyan31@gmail.com> 1778407109 +0800	rebase (pick): add all test cases
+82bfd4a2f7e7e4792b233d15cfdec44cba6a1f7b 1fa11cdb72ac7cb388d8182dd8d362c28423e03d masterlin666 <linmingyan31@gmail.com> 1778407189 +0800	rebase (continue): fix line 330
+1fa11cdb72ac7cb388d8182dd8d362c28423e03d af9c23dd8e2f5483aed4d5c7370dab7cd728cdbd masterlin666 <linmingyan31@gmail.com> 1778407225 +0800	rebase (continue): add git ignore
+af9c23dd8e2f5483aed4d5c7370dab7cd728cdbd 92a64250d0dad405a6564611d704f4eda4d9820b masterlin666 <linmingyan31@gmail.com> 1778407229 +0800	rebase (pick): remove exe
+92a64250d0dad405a6564611d704f4eda4d9820b 6a9e16b789856d8a958f44594a5c43ce6f6bfd7e masterlin666 <linmingyan31@gmail.com> 1778407372 +0800	rebase (continue): 0xffu prob and enum prob
+6a9e16b789856d8a958f44594a5c43ce6f6bfd7e 6a9e16b789856d8a958f44594a5c43ce6f6bfd7e masterlin666 <linmingyan31@gmail.com> 1778407375 +0800	rebase (finish): returning to refs/heads/feature/林名延
+6a9e16b789856d8a958f44594a5c43ce6f6bfd7e 80e8e6dbe7f7280004766d17109bd9d08304b5dd masterlin666 <linmingyan31@gmail.com> 1778419063 +0800	commit: cpop
+80e8e6dbe7f7280004766d17109bd9d08304b5dd 33995ca4066db8d9e84f7039415042af26832951 masterlin666 <linmingyan31@gmail.com> 1778419357 +0800	commit: testcase re
+33995ca4066db8d9e84f7039415042af26832951 b5734f57483b793c000e4620f3ec069d6c9d3785 masterlin666 <linmingyan31@gmail.com> 1778419779 +0800	commit: testcase re
+b5734f57483b793c000e4620f3ec069d6c9d3785 4ffc53bb3188a7fd06af48862ed589a2dbdbc1f3 masterlin666 <linmingyan31@gmail.com> 1778419882 +0800	commit: testcase re
+4ffc53bb3188a7fd06af48862ed589a2dbdbc1f3 25b51d9839637d5ddbac015e19ef63be0536c777 masterlin666 <linmingyan31@gmail.com> 1778419968 +0800	commit: testcase re
+25b51d9839637d5ddbac015e19ef63be0536c777 21fbc06358325a20c4b7b77933695171aeef31a4 masterlin666 <linmingyan31@gmail.com> 1778420061 +0800	commit: testcase re

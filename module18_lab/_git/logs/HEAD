@@ -1,0 +1,46 @@
+0000000000000000000000000000000000000000 0bd408f919276a9bb2025dfe62ef91ba225b8674 masterlin666 <linmingyan31@gmail.com> 1780072956 +0800	clone: from https://course.playlab.tw/git/procat/module18_lab.git
+0bd408f919276a9bb2025dfe62ef91ba225b8674 3e992be53a86dd9efa056c9c633de0398b87a509 masterlin666 <linmingyan31@gmail.com> 1780073862 +0800	commit: try 18exp
+3e992be53a86dd9efa056c9c633de0398b87a509 3e992be53a86dd9efa056c9c633de0398b87a509 masterlin666 <linmingyan31@gmail.com> 1780074253 +0800	checkout: moving from main to noloop
+3e992be53a86dd9efa056c9c633de0398b87a509 2a0c72455c3963cacabe255f28137dff7e8c8719 masterlin666 <linmingyan31@gmail.com> 1780074276 +0800	commit: safe
+2a0c72455c3963cacabe255f28137dff7e8c8719 737b1d06c4ec520eee69b4505f0301a22a4923b3 masterlin666 <linmingyan31@gmail.com> 1780074907 +0800	commit: try18-1
+737b1d06c4ec520eee69b4505f0301a22a4923b3 4b8cf935f78d675d749ae7ac27c86620ef13ead9 masterlin666 <linmingyan31@gmail.com> 1780074971 +0800	commit: try18-1
+4b8cf935f78d675d749ae7ac27c86620ef13ead9 c2931bab825cfd95ccad8336701a2bedd6b04a66 masterlin666 <linmingyan31@gmail.com> 1780075503 +0800	commit: 18-1 second try
+c2931bab825cfd95ccad8336701a2bedd6b04a66 1b3eeb6c648dd7d1498bc69d1a0f95979abe1ffb masterlin666 <linmingyan31@gmail.com> 1780075690 +0800	commit: 18-1 little change on second try
+1b3eeb6c648dd7d1498bc69d1a0f95979abe1ffb 164c0432f9f58406ae63dace1a71e26a280d064e masterlin666 <linmingyan31@gmail.com> 1780075927 +0800	commit: 18-1
+164c0432f9f58406ae63dace1a71e26a280d064e c68e916ca86566038c7296915db56cc54e77adc6 masterlin666 <linmingyan31@gmail.com> 1780076108 +0800	commit: 18-1 about ai
+c68e916ca86566038c7296915db56cc54e77adc6 ba6bd85dcb8d5ebe035192bc48a2db8a6b37fb4a masterlin666 <linmingyan31@gmail.com> 1780076178 +0800	commit: 18-1 about class
+ba6bd85dcb8d5ebe035192bc48a2db8a6b37fb4a f99fd57134e92026206d367a27c4332255d669a1 masterlin666 <linmingyan31@gmail.com> 1780076334 +0800	commit: 18-1 safe ver for test1
+f99fd57134e92026206d367a27c4332255d669a1 1e8e900c7e8bbf7f94ba276f167432631d0d1fc5 masterlin666 <linmingyan31@gmail.com> 1780076432 +0800	commit: 18-1 keep trying
+1e8e900c7e8bbf7f94ba276f167432631d0d1fc5 603676022e989c0572d037e72ede9fa89dbe4fbd masterlin666 <linmingyan31@gmail.com> 1780076816 +0800	commit: 18-1 keep trying
+603676022e989c0572d037e72ede9fa89dbe4fbd 9da7e13403a6166a35b25f34077bb835e7282611 masterlin666 <linmingyan31@gmail.com> 1780077065 +0800	commit: 18-1 keep trying
+9da7e13403a6166a35b25f34077bb835e7282611 b84101f686f408b24cf1571b8ef3cea7e5de6043 masterlin666 <linmingyan31@gmail.com> 1780077108 +0800	commit: 18-1 keep trying
+b84101f686f408b24cf1571b8ef3cea7e5de6043 f16f4329d9f235e40ec5e40d963ec14e60196210 masterlin666 <linmingyan31@gmail.com> 1780077855 +0800	commit: changetop?
+f16f4329d9f235e40ec5e40d963ec14e60196210 0994cf2ac33253f5f8b5bae63790b44afc9f166d masterlin666 <linmingyan31@gmail.com> 1780078094 +0800	commit: change bacck
+0994cf2ac33253f5f8b5bae63790b44afc9f166d 7755e5f4ed97f64809910e06ddf9f10696334153 masterlin666 <linmingyan31@gmail.com> 1780078306 +0800	commit: big change
+7755e5f4ed97f64809910e06ddf9f10696334153 0994cf2ac33253f5f8b5bae63790b44afc9f166d masterlin666 <linmingyan31@gmail.com> 1780078449 +0800	reset: moving to 0994cf2ac33253f5f8b5bae63790b44afc9f166d
+0994cf2ac33253f5f8b5bae63790b44afc9f166d 50c7444fa5f6c4d073aa3e236245529c78381706 masterlin666 <linmingyan31@gmail.com> 1780186993 +0800	commit: small change from safe
+50c7444fa5f6c4d073aa3e236245529c78381706 d2fd4d2341d7f80bc77714a3f4422ab202ecafee masterlin666 <linmingyan31@gmail.com> 1780187253 +0800	commit: small change
+d2fd4d2341d7f80bc77714a3f4422ab202ecafee b49caedbca9c5ccd82dbf146810c8fc49b7172e1 masterlin666 <linmingyan31@gmail.com> 1780187677 +0800	commit: small change 2
+b49caedbca9c5ccd82dbf146810c8fc49b7172e1 e0fabe6649413632f062d0abd4bc4b87ada38344 masterlin666 <linmingyan31@gmail.com> 1780187977 +0800	commit: small change 3
+e0fabe6649413632f062d0abd4bc4b87ada38344 56ea69d672e9b1447a1001db0ea14efeb12520c9 masterlin666 <linmingyan31@gmail.com> 1780188274 +0800	commit: small change 4
+56ea69d672e9b1447a1001db0ea14efeb12520c9 5e71ad6fdf7825e381d71f64f68e5d9ab3e9be0b masterlin666 <linmingyan31@gmail.com> 1780188991 +0800	commit: small change 5
+5e71ad6fdf7825e381d71f64f68e5d9ab3e9be0b 512a9cf045533103b6349caf2768bc58d984c4d1 masterlin666 <linmingyan31@gmail.com> 1780189123 +0800	commit: small change 6
+512a9cf045533103b6349caf2768bc58d984c4d1 b246883dd49cea5e6cee28b6a2b7fe456134c4c5 masterlin666 <linmingyan31@gmail.com> 1780189376 +0800	commit: small change 7
+b246883dd49cea5e6cee28b6a2b7fe456134c4c5 7bc0c07cb271970420896c8ecc2ee4b86044e77c masterlin666 <linmingyan31@gmail.com> 1780189535 +0800	commit: small change 8
+7bc0c07cb271970420896c8ecc2ee4b86044e77c abb02b9314e41164d3e785f61b2c52703ac6d4e5 masterlin666 <linmingyan31@gmail.com> 1780189759 +0800	commit: small change 8
+abb02b9314e41164d3e785f61b2c52703ac6d4e5 930bdf688bf678b259c5f9d49b18f353c261bc27 masterlin666 <linmingyan31@gmail.com> 1780190289 +0800	commit: small change 9
+930bdf688bf678b259c5f9d49b18f353c261bc27 946e78e28730c6ab5e92ea57bc8dbeb63499d78c masterlin666 <linmingyan31@gmail.com> 1780190361 +0800	commit: small change 10
+946e78e28730c6ab5e92ea57bc8dbeb63499d78c 31eb1473992e5d973ff64640bdc1333c315c2d5a masterlin666 <linmingyan31@gmail.com> 1780190518 +0800	commit: small change 11
+31eb1473992e5d973ff64640bdc1333c315c2d5a d81e2890de7ced52323c2a28334f949be537996e masterlin666 <linmingyan31@gmail.com> 1780191187 +0800	commit: small change 12
+d81e2890de7ced52323c2a28334f949be537996e 2ac5b557b519fd783facf421a2367e27eaaf2056 masterlin666 <linmingyan31@gmail.com> 1780191554 +0800	commit: small change 13
+2ac5b557b519fd783facf421a2367e27eaaf2056 cf735ee893fd07524fccc1518ecbf697245d6917 masterlin666 <linmingyan31@gmail.com> 1780192023 +0800	commit: small change 14
+cf735ee893fd07524fccc1518ecbf697245d6917 b1c5701db951617865f4b37506c43fc7aeb993fa masterlin666 <linmingyan31@gmail.com> 1780192768 +0800	commit: 18-2 test
+b1c5701db951617865f4b37506c43fc7aeb993fa 55f79032cf981e32d260508390aa843778f04edc masterlin666 <linmingyan31@gmail.com> 1780209679 +0800	commit: fib test
+55f79032cf981e32d260508390aa843778f04edc 55f79032cf981e32d260508390aa843778f04edc masterlin666 <linmingyan31@gmail.com> 1780905712 +0800	checkout: moving from noloop to final_bonus
+55f79032cf981e32d260508390aa843778f04edc 500d6d8cd8e8538053beb09f0e04b9e3ec9bc894 masterlin666 <linmingyan31@gmail.com> 1780905764 +0800	commit: test here
+500d6d8cd8e8538053beb09f0e04b9e3ec9bc894 e34a8d5b062293472c5b5211066cb51a69b83194 masterlin666 <linmingyan31@gmail.com> 1780906169 +0800	commit: test -1
+e34a8d5b062293472c5b5211066cb51a69b83194 f31f4b526259954b87caa67db319f7e2e8fea45b masterlin666 <linmingyan31@gmail.com> 1780906301 +0800	commit: all finish
+f31f4b526259954b87caa67db319f7e2e8fea45b bd10471960895468a179bb46e475d28c54ce627c masterlin666 <linmingyan31@gmail.com> 1780907960 +0800	commit: add all cases
+bd10471960895468a179bb46e475d28c54ce627c a0ae32a2e46bab598979b318db74a88e06cd4b84 masterlin666 <linmingyan31@gmail.com> 1780908155 +0800	commit: add all cases sh
+a0ae32a2e46bab598979b318db74a88e06cd4b84 c25849d8b3e5c0bb5a5176ba30509cc0175ae8db masterlin666 <linmingyan31@gmail.com> 1780908259 +0800	commit: add all cases sh
+c25849d8b3e5c0bb5a5176ba30509cc0175ae8db fda57253514f254e5cd2d5ac4bd81ebe7d432d2d masterlin666 <linmingyan31@gmail.com> 1780908738 +0800	commit: add json

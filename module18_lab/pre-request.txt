@@ -1,0 +1,423 @@
+Module 18 Lab：Pipeline Hazards 與效能分析
+開始之前
+步驟 1：Fork 你自己的 Lab Repo
+在本頁下方（或作業頁面），點擊 「Create Lab Repo」 按鈕，系統會自動：
+
+將 acal-2026-curriculum/module18_lab fork 到你的個人命名空間（你的帳號/module18_lab）
+授權助教存取你的 repo 以進行批改
+步驟 2：Clone 你的個人 Repo
+# 將 <你的帳號> 替換為你的 GitLab 使用者名稱
+git clone https://course.playlab.tw/git/<你的帳號>/module18_lab.git
+cd module18_lab
+步驟 3：完成後提交你的作業
+完成 lab 和作業後，提交並推送：
+
+git add .
+git commit -m "完成 Module 18 Lab 和作業"
+git push origin main
+Info
+
+已經 clone 了課程原始 repo？ 如果你之前 clone 的是 acal-2026-curriculum/module18_lab（唯讀），可以用以下指令將 remote 改指向你的個人 repo：
+
+git remote set-url origin https://course.playlab.tw/git/<你的帳號>/module18_lab.git
+git remote -v
+git push origin main
+先備條件
+環境設定
+本實驗假設你在課程 Docker 容器內工作。如果你尚未設定，請參考 Lab 0 的設定說明。
+
+Repository 設定
+cd ~/projects
+git clone ssh://git@course.playlab.tw:30022/acal-curriculum/2025-spring/lab09.git
+cd lab09
+
+# Add your private upstream repository
+git remote add gitlab ssh://git@course.playlab.tw:30022/<your_ldap_name>/lab09.git
+完成後，將你的程式碼推送回你自己的 repository：
+
+git push --set-upstream gitlab main
+設定 RISC-V 測試程式
+編譯測試程式：
+
+cd riscv-test
+make all
+將測試資料複製到硬體資料夾：
+
+# Using the helper script
+cd ../Hardware/Lab
+bash ./load_test_data.sh -s TestDataHazard
+
+# Or manually:
+cp ../../riscv-test/rv32ui_SingleTest/inst.hex src/main/resource/
+cp ../../riscv-test/rv32ui_SingleTest/inst.asm src/main/resource/
+cp ../../riscv-test/rv32ui_SingleTest/data.hex src/main/resource/
+執行 CPU 模擬：
+
+sbt 'Test/runMain acal_lab09.topTest'
+Lab 17-1：辨識程式碼序列中的 Data Hazards
+目標
+透過分析組合語言程式碼序列來學習辨識 RAW（Read After Write）data hazards。這是在撰寫硬體之前建立直覺的紙筆練習。
+
+背景
+當較晚的指令讀取較早的指令寫入的 register，且該寫入尚未在 pipeline 中完成時，就會發生 RAW hazard。在我們的 5-stage pipeline 中，source registers 在 ID stage 被讀取，destination register 在 WB stage 被寫入。
+
+不是每條指令都使用每個 register 欄位。請參考 RegFile 使用表：
+
+指令類型 (opcode)	R-Type	I-Type	B-Type	AUIPC	LUI	JAL	JALR	LOAD	STORE
+使用 rs1	Yes	Yes	Yes				Yes	Yes	Yes
+使用 rs2	Yes		Yes						Yes
+使用 rd	Yes	Yes		Yes	Yes	Yes	Yes	Yes	
+說明
+對於以下每個程式碼序列，辨識所有 RAW hazards。對於每個 hazard，請指出：
+
+哪個 register 造成 hazard
+哪條指令寫入該 register（以及衝突發生時它在哪個 pipeline stage）
+哪條指令讀取該 register（以及衝突發生時它在哪個 pipeline stage）
+需要多少 stall cycles 來解決
+序列 1：簡單的鏈式相依
+add  x3, x1, x2     # Inst A
+sub  x5, x3, x4     # Inst B
+and  x6, x3, x5     # Inst C
+or   x7, x6, x1     # Inst D
+序列 2：混合指令類型
+lw   x10, 0(x1)     # Inst A: LOAD -- uses rs1, writes rd
+addi x11, x10, 5    # Inst B: I-type -- uses rs1, writes rd
+sw   x11, 4(x1)     # Inst C: STORE -- uses rs1, rs2 (no rd)
+beq  x10, x11, label # Inst D: B-type -- uses rs1, rs2 (no rd)
+序列 3：無 hazard 的陷阱
+lui  x5, 0x12345     # Inst A: LUI -- no rs1, no rs2, writes rd
+add  x6, x5, x7     # Inst B
+jal  x1, func        # Inst C: JAL -- no rs1, no rs2, writes rd=x1
+addi x8, x0, 10     # Inst D: reads x0 (always zero)
+繳交項目
+對於每個序列，建立如下表格：
+
+Hazard #	Register	Writer (Inst, Stage)	Reader (Inst, Stage)	Stall Cycles
+1	x3	A (WB)	B (ID)	1
+...	...	...	...	...
+重要： 記住讀取 x0 永遠不會造成 hazard（x0 被硬接線為零）。此外，STORE 和 BRANCH 指令不寫入 rd，所以它們不能成為 RAW hazard 中的「寫入者」。
+
+自我檢查問題
+在序列 3 中，addi x8, x0, 10 是否與前面的任何指令有 hazard？為什麼？
+STORE 指令能否作為寫入者造成 RAW hazard？請解釋。
+如果 Inst A 是 lui x5, 0x12345 而 Inst B 是 add x6, x5, x7，是否有 hazard？涉及哪些 pipeline stages？
+Lab 17-2：實作 WB-to-ID Data Hazard Stall
+目標
+在 Controller.scala 中實作 WB-to-ID data hazard 偵測和 stall 機制。
+
+背景
+助教的範例程式碼提供了 data hazard 偵測的起始點。is_D_use_rs1、is_D_use_rs2 和 is_W_use_rd 信號已部分實作。你的任務是為所有 RV32I 指令類型完成它們。
+
+說明
+開啟 lab09 硬體專案中的 Controller.scala。
+
+完成 is_D_use_rs1 信號。 加入所有讀取 rs1 的 opcodes：
+
+is_D_use_rs1 := MuxLookup(ID_opcode, false.B, Seq(
+  OP     -> true.B,    // R-type: add, sub, and, or, xor, sll, srl, sra, slt, sltu
+  OP_IMM -> true.B,    // I-type: addi, andi, ori, xori, slti, sltiu, slli, srli, srai
+  BRANCH -> true.B,    // B-type: beq, bne, blt, bge, bltu, bgeu
+  JALR   -> true.B,    // JALR
+  LOAD   -> true.B,    // lw, lh, lb, lhu, lbu
+  STORE  -> true.B,    // sw, sh, sb
+))
+完成 is_D_use_rs2 信號。 只有三種 opcode 類型使用 rs2：
+
+is_D_use_rs2 := MuxLookup(ID_opcode, false.B, Seq(
+  OP     -> true.B,    // R-type
+  BRANCH -> true.B,    // B-type
+  STORE  -> true.B,    // Store
+))
+完成 is_W_use_rd 信號。 加入所有寫入 rd 的 opcodes：
+
+is_W_use_rd := MuxLookup(WB_opcode, false.B, Seq(
+  OP     -> true.B,
+  OP_IMM -> true.B,
+  AUIPC  -> true.B,
+  LUI    -> true.B,
+  JAL    -> true.B,
+  JALR   -> true.B,
+  LOAD   -> true.B,
+))
+驗證 overlap 偵測邏輯 是否正確：
+
+is_D_rs1_W_rd_overlap := is_D_use_rs1 && is_W_use_rd &&
+  (ID_rs1 === WB_rd) && (WB_rd =/= 0.U(5.W))
+is_D_rs2_W_rd_overlap := is_D_use_rs2 && is_W_use_rd &&
+  (ID_rs2 === WB_rd) && (WB_rd =/= 0.U(5.W))
+驗證 stall 和 flush 信號：
+
+io.Stall_WB_ID_DH := (is_D_rs1_W_rd_overlap || is_D_rs2_W_rd_overlap)
+io.Flush_WB_ID_DH := (is_D_rs1_W_rd_overlap || is_D_rs2_W_rd_overlap)
+驗證 PipelinedCPU.scala 中的連接：
+
+stage_IF.io.Stall := (contorller.io.Hcf || contorller.io.Stall_WB_ID_DH)
+stage_ID.io.Stall := (contorller.io.Hcf || contorller.io.Stall_WB_ID_DH)
+stage_EXE.io.Flush := (contorller.io.Flush_BH || contorller.io.Flush_WB_ID_DH)
+測試
+載入 TestDataHazard.S 測試程式並執行：
+
+cd ~/projects/lab09/Hardware/Lab
+bash ./load_test_data.sh -s TestDataHazard
+sbt 'Test/runMain acal_lab09.topTest'
+檢查 register file 輸出。在此階段，某些測試案例可能仍然失敗，因為 MEM-to-ID 和 EXE-to-ID hazards 尚未處理。專注於驗證 WB-to-ID hazards 是否正確解決。
+
+除錯技巧
+將模擬輸出匯出到檔案：sbt 'Test/runMain acal_lab09.topTest' > out.txt
+尋找 Stall_DH = 1 的行，驗證 stall 是否在正確的 cycle 發生。
+檢查 WB register 寫入是否在 stall 的指令繼續執行之前完成。
+Lab 17-3：實作 MEM-to-ID 和 EXE-to-ID Data Hazard Stalls
+目標
+擴展 data hazard 偵測以涵蓋所有三種 hazard 情境：WB-to-ID、MEM-to-ID 和 EXE-to-ID。
+
+說明
+加入 MEM stage 的 is_M_use_rd 信號：
+
+val is_M_use_rd = Wire(Bool())
+is_M_use_rd := MuxLookup(MEM_opcode, false.B, Seq(
+  OP     -> true.B,
+  OP_IMM -> true.B,
+  AUIPC  -> true.B,
+  LUI    -> true.B,
+  JAL    -> true.B,
+  JALR   -> true.B,
+  LOAD   -> true.B,
+))
+加入 EXE stage 的 is_E_use_rd 信號：
+
+val is_E_use_rd = Wire(Bool())
+is_E_use_rd := MuxLookup(EXE_opcode, false.B, Seq(
+  OP     -> true.B,
+  OP_IMM -> true.B,
+  AUIPC  -> true.B,
+  LUI    -> true.B,
+  JAL    -> true.B,
+  JALR   -> true.B,
+  LOAD   -> true.B,
+))
+加入 MEM-to-ID overlap 偵測：
+
+val is_D_rs1_M_rd_overlap = Wire(Bool())
+val is_D_rs2_M_rd_overlap = Wire(Bool())
+
+is_D_rs1_M_rd_overlap := is_D_use_rs1 && is_M_use_rd &&
+  (ID_rs1 === MEM_rd) && (MEM_rd =/= 0.U(5.W))
+is_D_rs2_M_rd_overlap := is_D_use_rs2 && is_M_use_rd &&
+  (ID_rs2 === MEM_rd) && (MEM_rd =/= 0.U(5.W))
+加入 EXE-to-ID overlap 偵測：
+
+val is_D_rs1_E_rd_overlap = Wire(Bool())
+val is_D_rs2_E_rd_overlap = Wire(Bool())
+
+is_D_rs1_E_rd_overlap := is_D_use_rs1 && is_E_use_rd &&
+  (ID_rs1 === EXE_rd) && (EXE_rd =/= 0.U(5.W))
+is_D_rs2_E_rd_overlap := is_D_use_rs2 && is_E_use_rd &&
+  (ID_rs2 === EXE_rd) && (EXE_rd =/= 0.U(5.W))
+更新 stall 和 flush 信號 以包含所有三種情境：
+
+val Stall_DH = (is_D_rs1_W_rd_overlap || is_D_rs2_W_rd_overlap) ||
+               (is_D_rs1_M_rd_overlap || is_D_rs2_M_rd_overlap) ||
+               (is_D_rs1_E_rd_overlap || is_D_rs2_E_rd_overlap)
+
+io.Stall_DH := Stall_DH
+io.Flush_DH := Stall_DH
+更新 PipelinedCPU.scala 以使用合併的 stall 信號：
+
+stage_IF.io.Stall := (contorller.io.Hcf || contorller.io.Stall_DH)
+stage_ID.io.Stall := (contorller.io.Hcf || contorller.io.Stall_DH)
+stage_EXE.io.Flush := (contorller.io.Flush_BH || contorller.io.Flush_DH)
+測試
+bash ./load_test_data.sh -s TestDataHazard
+sbt 'Test/runMain acal_lab09.topTest'
+成功標準： 在 register file 輸出中，sp (x2) 應為零。如果 sp 有非零值，該值表示哪個測試案例失敗。
+
+常見錯誤
+忘記在 is_E_use_rd 或 is_M_use_rd 中加入某個 opcode。
+未檢查 rd =/= 0.U(5.W) —— 這會導致與 x0 的錯誤 hazards。
+將個別的 stall 信號（WB/MEM/EXE）連接到不同的 pipeline 控制點，而非將它們合併。
+Lab 17-4：實作 Branch Hazard 處理
+目標
+實作 control hazard（branch hazard）偵測和 misprediction 時的 pipeline flushing。
+
+背景
+我們的 pipeline 使用靜態 not-taken 預測。當分支實際上是 taken 時，我們必須：
+
+將 PC 重新導向到分支目標位址（EXE_T_PC）。
+Flush IF 和 ID stages 中的指令（它們來自錯誤的路徑）。
+說明
+驗證 RiscvDefs.scala 中的 PC 選擇常數：
+
+object pc_sel_map {
+  val IF_PC_PLUS_4 = 0.U    // Normal: next sequential instruction
+  val EXE_PC_PLUS_4 = 1.U   // EXE stage PC + 4 (for JALR)
+  val EXE_T_PC = 2.U        // Branch target PC
+}
+在 Controller.scala 中實作 misprediction 偵測：
+
+val Predict_Miss = Wire(Bool())
+Predict_Miss := (E_En && E_Branch_taken && io.ID_pc =/= io.EXE_target_pc)
+E_En：EXE stage 中的有效指令（不是 bubble）。
+E_Branch_taken：分支條件為真（來自 ALU 比較）。
+io.ID_pc =/= io.EXE_target_pc：ID 中的指令是從錯誤的位址擷取的。
+實作 PC 選擇：
+
+when(Predict_Miss) {
+  io.PCSel := EXE_T_PC
+}.otherwise {
+  io.PCSel := IF_PC_PLUS_4
+}
+實作 flush 信號：
+
+io.Flush_BH := Predict_Miss
+在 PipelinedCPU.scala 中連接：
+
+// IF stage: select next PC
+datapath_IF.io.PCSel := contorller.io.PCSel
+datapath_IF.io.EXE_target_pc_in := datapath_EXE.io.EXE_target_pc_out
+
+// Flush ID and EXE on misprediction
+stage_ID.io.Flush := contorller.io.Flush_BH
+stage_EXE.io.Flush := (contorller.io.Flush_BH || contorller.io.Flush_DH)
+在 Path_IF.scala 中實作 PC 多工器：
+
+io.next_pc := MuxLookup(io.PCSel, (io.IF_pc_in + 4.U), Seq(
+  IF_PC_PLUS_4  -> (io.IF_pc_in + 4.U),
+  EXE_PC_PLUS_4 -> (io.EXE_pc_in + 4.U),
+  EXE_T_PC      -> io.EXE_target_pc_in
+))
+測試
+執行分支指令測試：
+
+bash ./load_test_data.sh -s beq
+sbt 'Test/runMain acal_lab09.topTest'
+也可以用其他分支指令測試：bne、blt、bge、bltu、bgeu，以及 jal、jalr。
+
+驗證當分支被 taken 時，Flush 信號出現在模擬輸出中。
+
+Lab 17-5：加入 Performance Counters（1-7）
+目標
+在 topTest.scala 中實作前 7 個 performance counters 以收集執行統計資料。
+
+說明
+在 topTest 開頭宣告 counter 變數：
+
+var Cycle_Count = 0
+var Inst_Count = 0
+var Conditional_Branch_Count = 0
+var Unconditional_Branch_Count = 0
+var Conditional_Branch_Hit_Count = 0
+var Unconditional_Branch_Hit_Count = 0
+var Flush_Count = 0
+在模擬迴圈中更新 counters：
+
+while (!peek(dut.io.Hcf)) {
+  // Peek signals
+  var Stall_MA = peek(dut.io.Stall_MA).toInt
+  var Stall_DH = peek(dut.io.Stall_DH).toInt
+  var EXE_Branch = peek(dut.io.EXE_Branch).toInt
+  var EXE_Jump = peek(dut.io.EXE_Jump).toInt
+  var Flush = peek(dut.io.Flush).toInt
+
+  // Counter 1: Cycle Count (always)
+  Cycle_Count += 1
+
+  if (Stall_MA == 0 && Stall_DH == 0) {
+    // Counter 2: Fetched Instruction Count
+    Inst_Count += 1
+
+    // Counters 3, 4, 7: Conditional Branch
+    if (EXE_Branch == 1) {
+      Conditional_Branch_Count += 1
+      if (Flush == 0) {
+        Conditional_Branch_Hit_Count += 1
+      } else {
+        Flush_Count += 1
+      }
+    }
+
+    // Counters 5, 6, 7: Unconditional Branch
+    if (EXE_Jump == 1) {
+      Unconditional_Branch_Count += 1
+      if (Flush == 0) {
+        Unconditional_Branch_Hit_Count += 1
+      } else {
+        Flush_Count += 1
+      }
+    }
+  }
+
+  step(1)
+}
+在模擬後印出 counters：
+
+println("==============================================================")
+println("Performance Counter:")
+println(s"[Cycle Count                    ] ${"%8d".format(Cycle_Count)}")
+println(s"[Inst Count                     ] ${"%8d".format(Inst_Count)}")
+println(s"[Conditional Branch Count       ] ${"%8d".format(Conditional_Branch_Count)}")
+println(s"[Unconditional Branch Count     ] ${"%8d".format(Unconditional_Branch_Count)}")
+println(s"[Conditional Branch Hit Count   ] ${"%8d".format(Conditional_Branch_Hit_Count)}")
+println(s"[Unconditional Branch Hit Count ] ${"%8d".format(Unconditional_Branch_Hit_Count)}")
+println(s"[Flush Count                    ] ${"%8d".format(Flush_Count)}")
+印出 CPI 分析：
+
+println("==============================================================")
+println("Performance Analysis:")
+println(s"[CPI                            ] ${"%8f".format(
+  Cycle_Count.toFloat / Inst_Count.toFloat)}")
+println("==============================================================")
+測試
+bash ./load_test_data.sh -s addi
+sbt 'Test/runMain acal_lab09.topTest'
+預期輸出（大約值）：
+
+Performance Counter:
+[Cycle Count                    ]       57
+[Inst Count                     ]       55
+[Conditional Branch Count       ]        4
+[Unconditional Branch Count     ]        0
+[Conditional Branch Hit Count   ]        1
+[Unconditional Branch Hit Count ]        0
+[Flush Count                    ]        3
+
+Performance Analysis:
+[CPI                            ] 1.036364
+Lab 17-6：執行 fib.asm 並分析效能
+目標
+執行 Fibonacci benchmark 程式，收集效能資料，並分析 pipeline 的效能特性。
+
+說明
+載入並執行 Fibonacci 程式：
+
+# If fib.asm is in the FullTest suite:
+bash ./load_test_data.sh fib
+sbt 'Test/runMain acal_lab09.topTest'
+如果你的 CPU 已正確實作 data hazard 偵測和 branch hazard 處理，fib.asm 應該在 register file 中產生正確的 Fibonacci 值。
+
+記錄 performance counter 輸出。 從模擬輸出中複製完整的 performance counter 區段。
+
+計算 CPI，根據 counter 輸出：
+
+CPI = Cycle Count / Inst Count
+分析結果：
+
+CPI 是多少？為什麼大於 1.0？
+有多少 conditional branches？預測命中率是多少？
+有多少 cycles 因 flushes 而損失？
+總 cycles 中有多少百分比是 stall cycles（data hazards）？
+與 single-cycle 比較。 如果你在 single-cycle CPU 上執行同一個程式：
+
+CPI 會是多少？（總是 1.0）
+但為什麼 pipelined CPU 仍然有更高的吞吐量？（提示：clock period）
+繳交項目
+fib.asm 完整 performance counter 輸出的截圖或複製
+CPI 計算和解釋
+簡短的分析段落（3-5 句）解釋效能特性
+Lab 總結
+Lab	主題	關鍵概念
+17-1	辨識 data hazards	RAW hazard 偵測、RegFile 使用表
+17-2	WB-to-ID stall	is_D_use_rs1、is_W_use_rd、overlap 偵測
+17-3	MEM/EXE-to-ID stalls	將 hazard 偵測擴展到所有三種情境
+17-4	Branch hazard 處理	Predict_Miss、EXE_T_PC、pipeline flush
+17-5	Performance counters	topTest.scala 中的 7 個 counters、CPI 計算
+17-6	Benchmark 分析	fib.asm、效能資料收集

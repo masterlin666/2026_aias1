@@ -1,0 +1,10 @@
+# test_clz.txt -- Zbb CLZ tests
+
+    li x1, 0
+    clz x2, x1              # Expected: x2 = 32 (0x20)
+
+    li x3, 1
+    clz x4, x3              # Expected: x4 = 31 (0x1f)
+
+    li x5, 0x80000000
+    clz x6, x5              # Expected: x6 = 0 (0x0)

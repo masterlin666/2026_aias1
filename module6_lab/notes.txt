@@ -1,0 +1,8 @@
+git clone https://course.playlab.tw/git/procat/module6_lab.git
+
+git add .
+git commit -m "try"
+git push origin main
+
+python3 hw28_1_lora_finetune.py
+git rev-parse HEAD

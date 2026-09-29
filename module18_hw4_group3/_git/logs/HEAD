@@ -1,0 +1,78 @@
+0000000000000000000000000000000000000000 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780194426 +0800	clone: from https://course.playlab.tw/git/seer0208v2/module18_hw4_group3
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780195101 +0800	checkout: moving from main to feature/林名延
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780203227 +0800	rebase (start): checkout main
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780203353 +0800	checkout: moving from 5a09485f05b7e657e090e438b244c86e19a19cc3 to feature/林名延
+5a09485f05b7e657e090e438b244c86e19a19cc3 0cc3dc3b9cd6d4e66698224f891fcc4673d53093 masterlin666 <linmingyan31@gmail.com> 1780203359 +0800	pull --rebase origin main: Fast-forward
+0cc3dc3b9cd6d4e66698224f891fcc4673d53093 3c01bb577ce09a609bab1c3c39b45af9d2fa5732 masterlin666 <linmingyan31@gmail.com> 1780208951 +0800	commit: first try
+3c01bb577ce09a609bab1c3c39b45af9d2fa5732 dd761f2b4648f46620b564713bf55fa5f608e142 masterlin666 <linmingyan31@gmail.com> 1780209338 +0800	commit: first try
+dd761f2b4648f46620b564713bf55fa5f608e142 d6ed9ce9bab04683cad93abcf3b503b5839758c6 masterlin666 <linmingyan31@gmail.com> 1780210875 +0800	commit: try old lt
+d6ed9ce9bab04683cad93abcf3b503b5839758c6 ecd03f434332b8e7f5d68e8b174d207c280f7318 masterlin666 <linmingyan31@gmail.com> 1780210934 +0800	commit: try new lt
+ecd03f434332b8e7f5d68e8b174d207c280f7318 a906fe064cd8cafd24bed7d8425dd3c9865d97ec masterlin666 <linmingyan31@gmail.com> 1780211496 +0800	commit: try new lt
+a906fe064cd8cafd24bed7d8425dd3c9865d97ec c5bacdb9f984d2f76f15d87e79dfa7bc8035d190 masterlin666 <linmingyan31@gmail.com> 1780211899 +0800	commit: try
+c5bacdb9f984d2f76f15d87e79dfa7bc8035d190 3f79321f7fc239346e489567f488b1b4e54c9938 masterlin666 <linmingyan31@gmail.com> 1780212145 +0800	commit: try
+3f79321f7fc239346e489567f488b1b4e54c9938 1c918496a598733e6b7d08e36b38dbd8fe9028cd masterlin666 <linmingyan31@gmail.com> 1780212482 +0800	commit: try
+1c918496a598733e6b7d08e36b38dbd8fe9028cd 6806011a9f37925823c9521dc1e671fa608b10cc masterlin666 <linmingyan31@gmail.com> 1780212892 +0800	commit: try
+6806011a9f37925823c9521dc1e671fa608b10cc cc04f481531784b122295f9a5a3f60e39bca564d masterlin666 <linmingyan31@gmail.com> 1780213074 +0800	commit: try2
+cc04f481531784b122295f9a5a3f60e39bca564d 4c698b2a41b191507474b60f2c3fde2bde3e6487 masterlin666 <linmingyan31@gmail.com> 1780213228 +0800	commit: try3
+4c698b2a41b191507474b60f2c3fde2bde3e6487 ac0f1b3c1348e315e9750206cf1ea3ebd42ca698 masterlin666 <linmingyan31@gmail.com> 1780213694 +0800	commit: try4
+ac0f1b3c1348e315e9750206cf1ea3ebd42ca698 65967aa60d6e667dcf92475e6dec80b02b91e517 masterlin666 <linmingyan31@gmail.com> 1780213812 +0800	commit: try4
+65967aa60d6e667dcf92475e6dec80b02b91e517 39fea71184a3f10f187dc2e9b8fe2ac94a5a6caa masterlin666 <linmingyan31@gmail.com> 1780213964 +0800	commit: try?
+39fea71184a3f10f187dc2e9b8fe2ac94a5a6caa 738ba0d576b21cccb1d633a3bca5d97a27d365cd masterlin666 <linmingyan31@gmail.com> 1780214336 +0800	commit: try????
+738ba0d576b21cccb1d633a3bca5d97a27d365cd 340f965bd0346710d9cf33134a93e684e1dcffaa masterlin666 <linmingyan31@gmail.com> 1780214385 +0800	commit: try????
+340f965bd0346710d9cf33134a93e684e1dcffaa a5949cbe35485fae0654a65699d3e0c06e3800fd masterlin666 <linmingyan31@gmail.com> 1780214481 +0800	commit: f?
+a5949cbe35485fae0654a65699d3e0c06e3800fd 842db1ad12a5b5d15699c65eb7dbae11d22afad2 masterlin666 <linmingyan31@gmail.com> 1780216203 +0800	commit: f?
+842db1ad12a5b5d15699c65eb7dbae11d22afad2 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780227891 +0800	rebase (abort): returning to refs/heads/feature/林名延
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780227891 +0800	rebase (abort): returning to refs/heads/feature/林名延
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780228001 +0800	rebase (start): checkout main
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780228001 +0800	rebase (finish): returning to refs/heads/feature/林名延
+5a09485f05b7e657e090e438b244c86e19a19cc3 5a09485f05b7e657e090e438b244c86e19a19cc3 masterlin666 <linmingyan31@gmail.com> 1780228154 +0800	checkout: moving from feature/林名延 to feature/林名延
+5a09485f05b7e657e090e438b244c86e19a19cc3 0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 masterlin666 <linmingyan31@gmail.com> 1780228434 +0800	commit: WIP
+0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 51de3a2186edb845d9425f860ceab41844baad8c masterlin666 <linmingyan31@gmail.com> 1780228460 +0800	rebase (start): checkout origin
+51de3a2186edb845d9425f860ceab41844baad8c 51de3a2186edb845d9425f860ceab41844baad8c masterlin666 <linmingyan31@gmail.com> 1780228460 +0800	rebase (finish): returning to refs/heads/main
+51de3a2186edb845d9425f860ceab41844baad8c 07a9c7b4c098cad67c368fa6ab6ea8a7bde618b4 masterlin666 <linmingyan31@gmail.com> 1780229350 +0800	commit: ref back
+07a9c7b4c098cad67c368fa6ab6ea8a7bde618b4 4b4763b857e88880be72180ee3e6476c94d6dc90 masterlin666 <linmingyan31@gmail.com> 1780229580 +0800	commit: ref back
+4b4763b857e88880be72180ee3e6476c94d6dc90 6e9944a9da24bbcf1f88fd8c6bad0ce177acd002 masterlin666 <linmingyan31@gmail.com> 1780229787 +0800	commit: fix ref
+6e9944a9da24bbcf1f88fd8c6bad0ce177acd002 233d1a3caf3e1a750e3662dbefc78b63f6ba6663 masterlin666 <linmingyan31@gmail.com> 1780229884 +0800	commit: sextg
+233d1a3caf3e1a750e3662dbefc78b63f6ba6663 9f311bc208f53c7c95afb605119659f18864614f masterlin666 <linmingyan31@gmail.com> 1780230197 +0800	commit: compile errors
+9f311bc208f53c7c95afb605119659f18864614f fcd9086478056aa85e34cfd7b160f17c864b3ff1 masterlin666 <linmingyan31@gmail.com> 1780230404 +0800	commit: add personal tb
+fcd9086478056aa85e34cfd7b160f17c864b3ff1 5b1d6b3766267819171626419bc3b40cbd2752aa masterlin666 <linmingyan31@gmail.com> 1780230810 +0800	commit: add binvi
+5b1d6b3766267819171626419bc3b40cbd2752aa 2ba4a89d3a6f106b0c75ab8a1fb2764b1c7ba427 masterlin666 <linmingyan31@gmail.com> 1780231170 +0800	commit: delete biniv
+2ba4a89d3a6f106b0c75ab8a1fb2764b1c7ba427 e95ea7fa9178f702c00f44dc889ba015d800039d masterlin666 <linmingyan31@gmail.com> 1780231658 +0800	commit: de
+e95ea7fa9178f702c00f44dc889ba015d800039d 98bf6c9878881cb43a94c8602d1e1a124147354b masterlin666 <linmingyan31@gmail.com> 1780232011 +0800	commit: debug test for 13
+98bf6c9878881cb43a94c8602d1e1a124147354b 1c3a0b8b0a8227bae0903a69347eff95a290da0c masterlin666 <linmingyan31@gmail.com> 1780232151 +0800	commit: debug test for 17
+1c3a0b8b0a8227bae0903a69347eff95a290da0c 3d8d53fdecb3ea1f76b75a3bb7e7e2883784bf0f masterlin666 <linmingyan31@gmail.com> 1780232443 +0800	commit: debug test for 17 second try
+3d8d53fdecb3ea1f76b75a3bb7e7e2883784bf0f 4a3e4b21b8555e6354c4e2ae48b8a18c654e45ef masterlin666 <linmingyan31@gmail.com> 1780232955 +0800	commit: debug test for sh3add
+4a3e4b21b8555e6354c4e2ae48b8a18c654e45ef 5279e5448bbc30921eddb4fedd419daa2fb72bf7 masterlin666 <linmingyan31@gmail.com> 1780233062 +0800	commit: debug test for sh3add
+5279e5448bbc30921eddb4fedd419daa2fb72bf7 0d64f15bc081934fbbae3817d7687b11d01517ab masterlin666 <linmingyan31@gmail.com> 1780233210 +0800	commit: debug test for sh3add
+0d64f15bc081934fbbae3817d7687b11d01517ab 77618b1b23666ac89a913180fc5d7c2c749eb298 masterlin666 <linmingyan31@gmail.com> 1780233469 +0800	commit: fin version
+77618b1b23666ac89a913180fc5d7c2c749eb298 0d8d352f9f2898045a416d72e6b8045c8cf913b3 masterlin666 <linmingyan31@gmail.com> 1780233861 +0800	commit: fin version
+0d8d352f9f2898045a416d72e6b8045c8cf913b3 1bfd7da3108477da5120d84437dcd1b9f7a704c5 masterlin666 <linmingyan31@gmail.com> 1780233958 +0800	commit: fin version
+1bfd7da3108477da5120d84437dcd1b9f7a704c5 4e8ca9c0c5f9be577b9e516c711d7984d65ac949 masterlin666 <linmingyan31@gmail.com> 1780234684 +0800	commit: fin version
+4e8ca9c0c5f9be577b9e516c711d7984d65ac949 dc9fb8f6129fca16272f4702224840a8c64840e9 masterlin666 <linmingyan31@gmail.com> 1780234904 +0800	commit: fin version
+dc9fb8f6129fca16272f4702224840a8c64840e9 71356c9f1e7560c1e0282053540ee843fa3a3d61 masterlin666 <linmingyan31@gmail.com> 1780235050 +0800	commit: fin version
+71356c9f1e7560c1e0282053540ee843fa3a3d61 faf1c3e7f128648d9f6122408d6f654c8d15eb8d masterlin666 <linmingyan31@gmail.com> 1780235124 +0800	commit: fin version
+faf1c3e7f128648d9f6122408d6f654c8d15eb8d 0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 masterlin666 <linmingyan31@gmail.com> 1780235469 +0800	checkout: moving from main to feature/林名延
+0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 faf1c3e7f128648d9f6122408d6f654c8d15eb8d masterlin666 <linmingyan31@gmail.com> 1780235482 +0800	checkout: moving from feature/林名延 to main
+faf1c3e7f128648d9f6122408d6f654c8d15eb8d 0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 masterlin666 <linmingyan31@gmail.com> 1780235604 +0800	checkout: moving from main to feature/林名延
+0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 masterlin666 <linmingyan31@gmail.com> 1780235676 +0800	reset: moving to HEAD
+0a559508c7b6d1c34dd0b3df34d86a1e41e0dce4 faf1c3e7f128648d9f6122408d6f654c8d15eb8d masterlin666 <linmingyan31@gmail.com> 1780235685 +0800	reset: moving to main
+faf1c3e7f128648d9f6122408d6f654c8d15eb8d faf1c3e7f128648d9f6122408d6f654c8d15eb8d masterlin666 <linmingyan31@gmail.com> 1780235885 +0800	checkout: moving from feature/林名延 to main
+faf1c3e7f128648d9f6122408d6f654c8d15eb8d aeaaf09279fd417c47cc12f8006443cd99f838c4 masterlin666 <linmingyan31@gmail.com> 1780236653 +0800	commit (merge): fix: resolve 7 conflicts masterfully
+aeaaf09279fd417c47cc12f8006443cd99f838c4 d31ebf96bfb5b2ce11521968ad1eaed14a50b125 masterlin666 <linmingyan31@gmail.com> 1780236744 +0800	commit: local test
+d31ebf96bfb5b2ce11521968ad1eaed14a50b125 20617585addf54baad4e742412780c9acf85de03 masterlin666 <linmingyan31@gmail.com> 1780236948 +0800	commit: fix issue little
+20617585addf54baad4e742412780c9acf85de03 75b54027d300ef8f1e5616f738714621c86e4783 masterlin666 <linmingyan31@gmail.com> 1780237041 +0800	commit: fix issue little
+75b54027d300ef8f1e5616f738714621c86e4783 b5bb8d4a05d309e0acaaaa2c6ae00cfe71e6ef34 masterlin666 <linmingyan31@gmail.com> 1780237205 +0800	commit: fix issue little
+b5bb8d4a05d309e0acaaaa2c6ae00cfe71e6ef34 14f8d8e00d5225368811c8bf2dd775353f23a9fc masterlin666 <linmingyan31@gmail.com> 1780237571 +0800	commit: fix issue little
+14f8d8e00d5225368811c8bf2dd775353f23a9fc 0aa22139493520e60d443f38932a6674e74f9f3d masterlin666 <linmingyan31@gmail.com> 1780237682 +0800	commit: fix issue little
+0aa22139493520e60d443f38932a6674e74f9f3d e924244ba55508d7a505338c22fe00f33aa42a8c masterlin666 <linmingyan31@gmail.com> 1780237843 +0800	commit: fix issue little
+e924244ba55508d7a505338c22fe00f33aa42a8c 3e49ec6e201a40f94fb3eb2e7c299044bbbb54e3 masterlin666 <linmingyan31@gmail.com> 1780238510 +0800	commit (merge): finish conflicts
+3e49ec6e201a40f94fb3eb2e7c299044bbbb54e3 db6014bf4a49cca2fc70bfa2e31aa59cbb46369e masterlin666 <linmingyan31@gmail.com> 1780239209 +0800	commit: what happen
+db6014bf4a49cca2fc70bfa2e31aa59cbb46369e 0609af5748b7417754e1b75f4a708560b9e3c4c6 masterlin666 <linmingyan31@gmail.com> 1780239357 +0800	commit: what happen
+0609af5748b7417754e1b75f4a708560b9e3c4c6 e87758898e1b96addefdc37a81b77ef6e7252202 masterlin666 <linmingyan31@gmail.com> 1780239447 +0800	commit: what happen
+e87758898e1b96addefdc37a81b77ef6e7252202 e87758898e1b96addefdc37a81b77ef6e7252202 masterlin666 <linmingyan31@gmail.com> 1780239871 +0800	checkout: moving from main to main
+e87758898e1b96addefdc37a81b77ef6e7252202 faf1c3e7f128648d9f6122408d6f654c8d15eb8d masterlin666 <linmingyan31@gmail.com> 1780239886 +0800	checkout: moving from main to feature/林名延
+faf1c3e7f128648d9f6122408d6f654c8d15eb8d e87758898e1b96addefdc37a81b77ef6e7252202 masterlin666 <linmingyan31@gmail.com> 1780239906 +0800	checkout: moving from feature/林名延 to main
+e87758898e1b96addefdc37a81b77ef6e7252202 e87758898e1b96addefdc37a81b77ef6e7252202 masterlin666 <linmingyan31@gmail.com> 1780240050 +0800	checkout: moving from main to main
+e87758898e1b96addefdc37a81b77ef6e7252202 6742baae4cba19e8e633d4c6e0eca5bd4d719d2c masterlin666 <linmingyan31@gmail.com> 1780241927 +0800	commit: try fix
+6742baae4cba19e8e633d4c6e0eca5bd4d719d2c 6742baae4cba19e8e633d4c6e0eca5bd4d719d2c masterlin666 <linmingyan31@gmail.com> 1780242448 +0800	checkout: moving from main to main
+6742baae4cba19e8e633d4c6e0eca5bd4d719d2c 6742baae4cba19e8e633d4c6e0eca5bd4d719d2c masterlin666 <linmingyan31@gmail.com> 1780242457 +0800	checkout: moving from main to feature/林名延

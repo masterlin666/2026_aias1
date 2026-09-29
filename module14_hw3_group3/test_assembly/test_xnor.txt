@@ -1,0 +1,32 @@
+# test_xnor.txt -- XNOR (Zbb) Tests
+# XNOR: rd = ~(rs1 ^ rs2)
+
+# Test case 1: Basic XNOR with different values
+    li x1, 0xAAAAAAAA        # 10101010...1010
+    li x2, 0x55555555        # 01010101...0101
+    xnor x3, x1, x2          # Expected: x3 = 0x00000000 (all bits XOR to 1, inverted to 0)
+
+# Test case 2: XNOR with same values (should be all 1s)
+    li x4, 0x12345678
+    li x5, 0x12345678
+    xnor x6, x4, x5          # Expected: x6 = 0xFFFFFFFF (same values XOR to 0, inverted to all 1s)
+
+# Test case 3: XNOR with zeros
+    li x7, 0x00000000
+    li x8, 0x00000000
+    xnor x9, x7, x8          # Expected: x9 = 0xFFFFFFFF
+
+# Test case 4: XNOR with zeros and all ones
+    li x10, 0x00000000
+    li x11, 0xFFFFFFFF
+    xnor x12, x10, x11       # Expected: x12 = 0x00000000
+
+# Test case 5: XNOR with partial patterns
+    li x13, 0xF0F0F0F0
+    li x14, 0x0FF0F00F
+    xnor x15, x13, x14       # Expected: x15 = 0xFFFF00
+
+# Test case 6: XNOR with one set bit
+    li x16, 0x00000001
+    li x17, 0x00000002
+    xnor x18, x16, x17       # Expected: x18 = 0xFFFFFFFC

@@ -1,0 +1,13 @@
+# test_bclr.txt -- Zbs BCLR tests
+
+    li x1, 0xF
+    li x2, 1
+    bclr x3, x1, x2         # Expected: x3 = 13 (0xd)
+
+    li x4, 0x80000000
+    li x5, 31
+    bclr x6, x4, x5         # Expected: x6 = 0 (0x0)
+
+    li x7, 0xA
+    li x8, 36
+    bclr x9, x7, x8         # Expected: x9 = 10 (0xa, bit index masks to 4)

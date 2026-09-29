@@ -1,0 +1,9 @@
+# test_mul.txt -- Test MUL instruction (M extension)
+# This will FAIL on the base emulator because MUL is not implemented.
+# Expected results (after Lab 13-4):
+#   x1 = 6, x2 = 7, x3 = 42
+
+    li x1, 6
+    li x2, 7
+    mul x3, x1, x2
+    addi x4, x3, 8

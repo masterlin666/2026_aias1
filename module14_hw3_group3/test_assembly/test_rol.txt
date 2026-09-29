@@ -1,0 +1,13 @@
+# test_rol.txt -- Zbb ROL tests
+
+    li x1, 0x12345678
+    li x2, 4
+    rol x3, x1, x2          # Expected: x3 = 591751041 (0x23456781)
+
+    li x4, 0x80000001
+    li x5, 1
+    rol x6, x4, x5          # Expected: x6 = 3 (0x3)
+
+    li x7, 0xDEADBEEF
+    li x8, 0
+    rol x9, x7, x8          # Expected: x9 = -559038737 (0xdeadbeef)

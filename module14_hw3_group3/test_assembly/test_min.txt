@@ -1,0 +1,13 @@
+# test_min.txt -- Zbb MIN tests
+
+    li x1, 5
+    li x2, 9
+    min x3, x1, x2          # Expected: x3 = 5
+
+    li x4, -10
+    li x5, 3
+    min x6, x4, x5          # Expected: x6 = -10
+
+    li x7, 0x80000000
+    li x8, 0x7FFFFFFF
+    min x9, x7, x8          # Expected: x9 = -2147483648 (0x80000000)

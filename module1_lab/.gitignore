@@ -1,0 +1,23 @@
+# ONNX models (too large for git — regenerate by running the .py scripts)
+*.onnx
+
+# Other large/binary files
+*.tflite
+*.tgz
+*.tar.gz
+*.pb
+*.pth
+*.pt
+*.bin
+*.h5
+
+# Netron screenshots are OK (PNG typically < 1MB)
+# *.png
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db

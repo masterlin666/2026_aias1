@@ -1,0 +1,26 @@
+# test_sext_b.txt -- SEXT.B (Zbb) Tests
+# SEXT.B: Sign-extend byte (bits [7:0] to 32-bit with sign extension)
+
+# Test case 1: Positive byte value (sign bit = 0)
+    li x1, 0x00000045        # 0x45 = 69, positive
+    sext.b x2, x1            # Expected: x2 = 0x00000045 (sign bit 0, no extension)
+
+# Test case 2: Negative byte value (sign bit = 1)
+    li x3, 0x000000FF        # 0xFF = -1 in signed byte
+    sext.b x4, x3            # Expected: x4 = 0xFFFFFFFF
+
+# Test case 3: Negative byte with upper bits set
+    li x5, 0x12345680        # 0x80 = -128 in signed byte
+    sext.b x6, x5            # Expected: x6 = 0xFFFFFF80
+
+# Test case 4: Zero byte
+    li x7, 0x00000000
+    sext.b x8, x7            # Expected: x8 = 0x00000000
+
+# Test case 5: Max positive byte (0x7F = 127)
+    li x9, 0x0000007F
+    sext.b x10, x9           # Expected: x10 = 0x0000007F
+
+# Test case 6: Min negative byte (0x80 = -128)
+    li x11, 0x00000080
+    sext.b x12, x11          # Expected: x12 = 0xFFFFFF80

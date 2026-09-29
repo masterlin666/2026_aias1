@@ -1,0 +1,8 @@
+deadbeef
+cafebabe
+12345678
+87654321
+aaaa5555
+5555aaaa
+0000ffff
+ffff0000

@@ -1,0 +1,49 @@
+# test_bitmanip.txt -- Zbb Extension Tests
+
+# CLZ tests
+    li x1, 0x00000001
+    clz x2, x1              # Expected: x2 = 31
+
+    li x3, 0x80000000
+    clz x4, x3              # Expected: x4 = 0
+
+    li x5, 0
+    clz x6, x5              # Expected: x6 = 32
+
+# CTZ tests
+    li x7, 0x80000000
+    ctz x8, x7              # Expected: x8 = 31
+
+    li x9, 0x00000010
+    ctz x10, x9             # Expected: x10 = 4
+
+    li x11, 0
+    ctz x12, x11            # Expected: x12 = 32
+
+# CPOP tests
+    li x13, 0x0000000F
+    cpop x14, x13           # Expected: x14 = 4
+
+    li x15, 0xFFFFFFFF
+    cpop x16, x15           # Expected: x16 = 32
+
+    li x17, 0
+    cpop x18, x17           # Expected: x18 = 0
+
+# MIN tests
+    li x19, 5
+    li x20, 3
+    min x21, x19, x20       # Expected: x21 = 3
+
+    li x22, -10
+    li x23, 5
+    min x24, x22, x23       # Expected: x24 = -10
+
+# MAX tests
+    li x25, 5
+    li x26, 3
+    max x27, x25, x26       # Expected: x27 = 5
+
+    li x28, -10
+    li x29, 5
+    max x30, x28, x29       # Expected: x30 = 5

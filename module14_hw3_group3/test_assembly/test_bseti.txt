@@ -1,0 +1,10 @@
+# test_bseti.txt -- Zbs BSETI tests
+
+    li x1, 0
+    bseti x2, x1, 3         # Expected: x2 = 8 (0x8)
+
+    li x3, 0x80000000
+    bseti x4, x3, 0         # Expected: x4 = 0x80000001
+
+    li x5, 0
+    bseti x6, x5, 31        # Expected: x6 = 0x80000000

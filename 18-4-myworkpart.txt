@@ -1,0 +1,7 @@
+| 3 | `cpop rd, rs` | Zbb - Population count | 林名延 |
+| 10 | `maxu rd, rs1, rs2` | Zbb - Maximum unsigned | 林名延 |
+| 12 | `sext.h rd, rs` | Zbb - Sign-extend halfword | 林名延 |
+| 15 | `binv rd, rs1, rs2` | Zbs - Bit invert | 林名延 |
+| 19 | `binvi rd, rs1, imm` | Zbs - Bit invert immediate | 林名延 |
+| 23 | `rori rd, rs1, imm` | Zbb - Rotate right immediate | 林名延 |
+| 26 | `sh3add rd, rs1, rs2` | Zba - Shift-and-add by 3 | 林名延 |

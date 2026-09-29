@@ -1,0 +1,22 @@
+# test_basic.txt -- Basic RV32I test
+# Expected results:
+#   x1 = 5, x2 = 3, x3 = 8, x4 = 2, x5 = 15
+
+    li x1, 5
+    li x2, 3
+    add x3, x1, x2
+    sub x4, x1, x2
+    li x5, 0
+    li x6, 1
+
+loop:
+    add x5, x5, x6
+    blt x5, x3, loop_continue
+    j done
+loop_continue:
+    addi x5, x5, 1
+    blt x5, x3, loop_continue
+    j done
+
+done:
+    addi x7, x5, 100

@@ -1,0 +1,25 @@
+# sbt build artifacts
+target/
+project/target/
+project/project/
+
+# Generated Verilog / FIRRTL
+*.fir
+*.v
+*.sv
+generated/
+
+# Simulation artifacts
+*.vcd
+*.fsdb
+test_run_dir/
+
+# IDE
+.idea/
+.bsp/
+.metals/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

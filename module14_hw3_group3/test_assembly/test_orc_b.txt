@@ -1,0 +1,14 @@
+# Test 1: Each byte mixed zero/non-zero
+li x1, 0x12003400
+orc.b x2, x1
+# Expected: x2 = 0xFF00FF00
+
+# Test 2: Single bit makes entire byte 0xFF
+li x1, 0x00010000
+orc.b x3, x1
+# Expected: x3 = 0x00FF0000
+
+# Test 3: All zero
+li x1, 0
+orc.b x4, x1
+# Expected: x4 = 0

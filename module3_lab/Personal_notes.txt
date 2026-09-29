@@ -1,0 +1,8 @@
+cd ~/workspace/module3_lab/build
+cmake -DCMAKE_PREFIX_PATH=/libtorch ..
+make
+
+# 執行分析
+./hw3_2 ../alexnet_original.pt ../alexnet_modified.pt
+./hw3_3 ../alexnet_original.pt ../alexnet_modified.pt
+./hw3_4 ../alexnet_original.pt ../alexnet_modified.pt

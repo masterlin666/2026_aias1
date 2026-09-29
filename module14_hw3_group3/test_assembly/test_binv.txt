@@ -1,0 +1,17 @@
+# Test 1: Invert bit 0
+li x1, 0
+li x2, 0
+binv x3, x1, x2
+# Expected: x3 = 1
+
+# Test 2: Invert sign bit (31)
+li x1, 0
+li x2, 31
+binv x4, x1, x2
+# Expected: x4 = -2147483648 (0x80000000)
+
+# Test 3: rs2 index masking (shamt & 31)
+li x1, 1           # 0x1
+li x2, 32          # 32 % 32 = 0
+binv x5, x1, x2    # Flip bit 0 again
+# Expected: x5 = 0

@@ -1,0 +1,161 @@
+Module 18 作業
+截止日期： 請參考課程時程表 總分： 100（+ 20 加分） -- HW 18-1/2/3 為個人作業（合計 70 分）；HW 18-4 為分組作業（30 分） 繳交方式： 依照繳交模板（submission_template.md）
+
+Lab 檔案與環境設定
+1. 建立你的個人 Lab Repo
+在本頁下方，點擊 「Create Lab Repo」 按鈕，系統會自動將 lab 儲存庫 fork 到你的個人命名空間，並授權助教存取。
+
+2. Clone 並設定環境
+# 將 <你的帳號> 替換為你的 GitLab 使用者名稱
+git clone https://course.playlab.tw/git/<你的帳號>/module18_lab.git
+cd module18_lab
+在 acal-curriculum Docker 容器內編譯專案：
+
+sbt compile
+3. 完成作業後提交
+git add .
+git commit -m "完成 Module 18 作業"
+git push origin main
+Info
+
+已經 clone 了課程原始 repo？ 用以下指令將 remote 改指向你的個人 repo：
+
+git remote set-url origin https://course.playlab.tw/git/<你的帳號>/module18_lab.git
+git push origin main
+參考資料：RegFile 使用表
+在整份作業中使用此表來判斷哪些 opcodes 使用哪些 registers：
+
+指令類型 (opcode)	R-Type	I-Type	B-Type	AUIPC	LUI	JAL	JALR	LOAD	STORE
+使用 rs1	Yes	Yes	Yes				Yes	Yes	Yes
+使用 rs2	Yes		Yes						Yes
+使用 rd	Yes	Yes		Yes	Yes	Yes	Yes	Yes	
+HW 18-1：完成 Data Hazard 偵測（25 分）
+簡介
+在實驗中，你使用基於 stall 的方式實作了 WB-to-ID、MEM-to-ID 和 EXE-to-ID 情境的 data hazard 偵測。在這份作業中，你必須確保你的實作正確處理所有 RV32I 指令類型，並通過兩個測試程式。
+
+要求
+在 Controller.scala 中完成所有 data hazard 偵測：
+
+is_D_use_rs1 必須涵蓋所有讀取 rs1 的 opcodes（R-type、I-type、B-type、JALR、LOAD、STORE）。
+is_D_use_rs2 必須涵蓋所有讀取 rs2 的 opcodes（R-type、B-type、STORE）。
+is_W_use_rd、is_M_use_rd、is_E_use_rd 必須涵蓋所有寫入 rd 的 opcodes（R-type、I-type、AUIPC、LUI、JAL、JALR、LOAD）。
+所有三種 overlap 偵測情境（WB-to-ID、MEM-to-ID、EXE-to-ID）都必須實作。
+rd =/= 0.U(5.W) 檢查必須出現在所有 overlap 條件中。
+實作 control hazard 處理（branch hazard）：
+
+用於 branch misprediction 偵測的 Predict_Miss 信號。
+用於 flush IF 和 ID stages 的 Flush_BH 信號。
+PC 選擇邏輯（misprediction 時選擇 EXE_T_PC）。
+通過以下測試程式：
+
+測試 1：rv32ui_SingleTest/TestDataHazard.S
+
+bash ./load_test_data.sh -s TestDataHazard
+sbt 'Test/runMain acal_lab09.topTest'
+成功標準： register file 輸出中 sp (x2) 為零。
+如果 sp 有非零值，該值表示失敗的測試案例編號。
+測試 2：rv32ui_FullTest/sum_negatives_data_hazard.S
+
+bash ./load_test_data.sh sum_negatives_data_hazard
+sbt 'Test/runMain acal_lab09.topTest'
+成功標準： register file 輸出中 a0 (x10) 為 0xfffff72d（即二補數中的 -2259，是測試資料中負數的正確總和）。
+繳交項目
+完整的 Controller.scala 程式碼，附有解釋 hazard 偵測邏輯的註解。
+兩個測試程式的 register file 輸出截圖或貼文，顯示成功的值。
+簡短描述（3-5 句）列出可能的 data hazard 情境以及你的設計如何解決每一個。
+執行測試
+# Test 1
+bash ./load_test_data.sh -s TestDataHazard
+sbt 'Test/runMain acal_lab09.topTest'
+
+# Test 2
+bash ./load_test_data.sh sum_negatives_data_hazard
+sbt 'Test/runMain acal_lab09.topTest'
+HW 18-2：Performance Counters 8-14 和效能分析 2-4（25 分）
+簡介
+在 Lab 17-5 中，你實作了 performance counters 1-7。在這份作業中，你要加入 counters 8-14 並實作效能分析指標 2-4。
+
+要求
+Performance Counters（14 分）
+在 topTest.scala 中加入以下 counters：
+
+#	Counter 名稱	描述	如何偵測
+8	Mem Read Stall Cycle Count	因記憶體讀取而 stall 的 cycles	有 load 指令等待時 Stall_MA == 1
+9	Mem Write Stall Cycle Count	因記憶體寫入而 stall 的 cycles	有 store 指令等待時 Stall_MA == 1
+10	Mem Read Request Count	已執行的 load 指令計數	在 MEM stage 偵測到 Load 類型指令
+11	Mem Write Request Count	已執行的 store 指令計數	在 MEM stage 偵測到 Store 類型指令
+12	Mem Read Bytes Count	load 指令讀取的總位元組數	每次 load 請求 4 bytes（lw/lh/lb 在 bus 上都占用 4 bytes）
+13	Mem Write Bytes Count	store 指令寫入的總位元組數	每次 store 請求 4 bytes（sw/sh/sb 在 bus 上都占用 4 bytes）
+14	Committed Instruction Count	完成執行的指令	WB stage 中有效的（非 flush、非 bubble）指令
+實作指引：
+
+你需要從 CPU peek 額外的信號來偵測 load/store 指令。考慮 peek MEM 或 WB stage 的 opcode。
+對於 counters 12 和 13，無論實際資料寬度為何（lw、lh、lb 在此設計中都在 bus 上傳輸 4 bytes），每次記憶體請求都計 4 bytes。
+對於 counter 14，只有當 WB stage 中是有效指令（不是 bubble 或被 flush 的指令）時才計為「已 committed」。
+輸出格式： 遵循與 counters 1-7 相同的格式：
+
+println(s"[Mem Read Stall Count           ] ${"%8d".format(Mem_Read_Stall_Count)}")
+println(s"[Mem Write Stall Count          ] ${"%8d".format(Mem_Write_Stall_Count)}")
+println(s"[Mem Read Request Count         ] ${"%8d".format(Mem_Read_Request_Count)}")
+println(s"[Mem Write Request Count        ] ${"%8d".format(Mem_Write_Request_Count)}")
+println(s"[Mem Read Bytes Count           ] ${"%8d".format(Mem_Read_Bytes_Count)}")
+println(s"[Mem Write Bytes Count          ] ${"%8d".format(Mem_Write_Bytes_Count)}")
+println(s"[Committed Inst Count           ] ${"%8d".format(Committed_Inst_Count)}")
+效能分析（11 分）
+實作以下效能分析指標，印在 performance counters 之後：
+
+#	分析指標	公式
+2	Average Mem Read Request Stall Cycle	Mem Read Stall Cycle Count / Mem Read Request Count
+3	Average Mem Write Request Stall Cycle	Mem Write Stall Cycle Count / Mem Write Request Count
+4	Total Bus Bandwidth Requirement	Mem Read Bytes Count + Mem Write Bytes Count
+輸出格式：
+
+println(s"[Avg Mem Read Stall Cycle       ] ${"%8f".format(
+  if (Mem_Read_Request_Count > 0)
+    Mem_Read_Stall_Count.toFloat / Mem_Read_Request_Count.toFloat
+  else 0.0f)}")
+println(s"[Avg Mem Write Stall Cycle      ] ${"%8f".format(
+  if (Mem_Write_Request_Count > 0)
+    Mem_Write_Stall_Count.toFloat / Mem_Write_Request_Count.toFloat
+  else 0.0f)}")
+println(s"[Total Bus Bandwidth (bytes)    ] ${"%8d".format(
+  Mem_Read_Bytes_Count + Mem_Write_Bytes_Count)}")
+注意： 處理除以零的情況 —— 如果沒有記憶體讀取或寫入請求，平均 stall cycles 應報告為 0.0。
+
+繳交項目
+完整的 topTest.scala 程式碼，包含全部 14 個 counters 和 4 個分析指標。
+執行 addi.s 並貼上完整的 performance counter 和分析輸出以驗證你的實作。
+執行測試
+bash ./load_test_data.sh -s addi
+sbt 'Test/runMain acal_lab09.topTest'
+HW 18-3：Benchmark 效能分析（20 分）
+簡介
+在你的 pipelined CPU 上執行 fib.asm benchmark 並使用全部 14 個 counters 和全部 4 個分析指標分析效能。
+
+要求
+在你的 pipelined CPU 上執行 fib.asm：
+
+bash ./load_test_data.sh fib
+sbt 'Test/runMain acal_lab09.topTest'
+記錄所有 performance counters（1-14）和所有效能分析指標（1-4）。貼上或截圖完整的輸出。
+
+計算並報告 CPI：
+
+使用 Cycle Count / Fetched Inst Count 計算的 CPI
+使用 Cycle Count / Committed Inst Count 計算的 CPI
+解釋為什麼這兩個值可能不同（提示：被 flush 的指令有被 fetch 但沒有被 committed）。
+分析效能資料。 回答以下問題：
+
+Q1（4 分）： fib.asm 的 CPI 是多少？將其分解：多少 cycles 來自 data hazard stalls？多少來自 branch misprediction flushes？多少來自 memory stalls？
+
+Q2（4 分）： Conditional branch prediction 的命中率是多少？（Conditional Branch Hit Count / Conditional Branch Count）。Not-taken 預測對 fib 迴圈有效嗎？為什麼？
+
+Q3（3 分）： Total Bus Bandwidth 與記憶體請求數量有什麼關係？fib.asm 中有很多記憶體運算，還是大部分是 register-to-register 計算？
+
+Q4（3 分）： 解釋 5-stage pipelined CPU 如何在 CPI > 1.0 的情況下仍然提升效能。你的解釋應該引用 clock period、throughput 和 pipeline speedup 公式。
+
+Pipeline 效率計算（3 分）：
+
+Pipeline utilization = Committed Inst Count / Cycle Count
+多少百分比的 cycles 是「有用的」（實際 commit 一條指令）？
+多少百分比的 cycles 是「浪費的」（stalls + flushes）？

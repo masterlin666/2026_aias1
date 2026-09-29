@@ -1,0 +1,32 @@
+# test_bext.txt -- BEXT (Zbs) Tests
+# BEXT: Single-bit extract (extract bit at position rs2[4:0])
+
+# Test case 1: Extract bit from set position
+    li x1, 0x00000001        # bit 0 set
+    li x2, 0                 # extract bit 0
+    bext x3, x1, x2          # Expected: x3 = 1
+
+# Test case 2: Extract bit from unset position
+    li x4, 0x00000001        # bit 0 set
+    li x5, 1                 # extract bit 1
+    bext x6, x4, x5          # Expected: x6 = 0
+
+# Test case 3: Extract high bit from pattern
+    li x7, 0x80000000        # bit 31 set
+    li x8, 31                # extract bit 31
+    bext x9, x7, x8          # Expected: x9 = 1
+
+# Test case 4: Extract bit from middle
+    li x10, 0x00000100       # bit 8 set
+    li x11, 8                # extract bit 8
+    bext x12, x10, x11       # Expected: x12 = 1
+
+# Test case 5: Extract from all ones
+    li x13, 0xFFFFFFFF
+    li x14, 15               # extract bit 15
+    bext x15, x13, x14       # Expected: x15 = 1
+
+# Test case 6: Extract from all zeros
+    li x16, 0x00000000
+    li x17, 7                # extract bit 7
+    bext x18, x16, x17       # Expected: x18 = 0

@@ -1,0 +1,34 @@
+# test_bexti.txt -- BEXTI (Zbs) Tests
+# BEXTI: Single-bit extract immediate (extract bit at immediate position [4:0])
+
+# Test case 1: Extract bit 0 from pattern with bit 0 set
+    li x1, 0x00000001
+    bexti x2, x1, 0          # Expected: x2 = 1
+
+# Test case 2: Extract bit 1 from pattern with only bit 0 set
+    li x3, 0x00000001
+    bexti x4, x3, 1          # Expected: x4 = 0
+
+# Test case 3: Extract bit 31 (sign bit)
+    li x5, 0x80000000
+    bexti x6, x5, 31         # Expected: x6 = 1
+
+# Test case 4: Extract bit from middle (bit 8)
+    li x7, 0x00000100
+    bexti x8, x7, 8          # Expected: x8 = 1
+
+# Test case 5: Extract bit 15 from all ones
+    li x9, 0xFFFFFFFF
+    bexti x10, x9, 15        # Expected: x10 = 1
+
+# Test case 6: Extract bit 7 from all zeros
+    li x11, 0x00000000
+    bexti x12, x11, 7        # Expected: x12 = 0
+
+# Test case 7: Extract bit 0 from 0xAAAAAAAA (10101010...)
+    li x13, 0xAAAAAAAA
+    bexti x14, x13, 0        # Expected: x14 = 0 (bit 0 not set)
+
+# Test case 8: Extract bit 1 from 0xAAAAAAAA
+    li x15, 0xAAAAAAAA
+    bexti x16, x15, 1        # Expected: x16 = 1 (bit 1 set)
